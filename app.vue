@@ -1,10 +1,7 @@
 <template>
   <div>
-    <div>{{ text }}</div>
-    Value
+    <HeaderView />
+    <NuxtPage />
+    <FooterView />
   </div>
 </template>
-
-<script setup lang="ts">
-const text: Ref = ref('Hello, World!')
-</script>
