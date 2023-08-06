@@ -19,7 +19,8 @@ export default defineNuxtConfig({
       failOnError: false
     }],
     '@nuxt/image',
-    '@nuxt/devtools'
+    '@nuxt/devtools',
+    'nuxt-swiper'
   ],
   image: {
     inject: true,
@@ -28,5 +29,12 @@ export default defineNuxtConfig({
     domains: ['nuxtjs.org'],
     dir: 'assets/images'
   },
-  css: ['~/assets/css/global.css', '~/assets/css/normalize.css']
+  css: ['~/assets/css/global.css', '~/assets/css/normalize.css'],
+  swiper: {
+    // Swiper options
+    // ----------------------
+    // prefix: 'Swiper',
+    // styleLang: 'css',
+    // modules: ['navigation', 'pagination'], // all modules are imported by default
+  }
 })
