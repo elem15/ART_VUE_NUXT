@@ -27,7 +27,7 @@ export default defineNuxtConfig({
     quality: 80,
     format: ['webp', 'jpg', 'png', 'svg'],
     domains: ['nuxtjs.org'],
-    dir: 'assets/images'
+    dir: 'public/img'
   },
   css: ['~/assets/css/global.css', '~/assets/css/normalize.css'],
   swiper: {

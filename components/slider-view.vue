@@ -15,20 +15,20 @@
     }"
   >
     <SwiperSlide v-for="slide in slides" :key="slide">
-      <img :src="slide.src" :alt="slide.alt">
+      <nuxt-img :src="slide.src" :alt="slide.alt" />
     </SwiperSlide>
   </Swiper>
 </template>
 
 <script setup lang="ts">
 const slides = [
-  { id: 1, src: 'img/painting/large/museum.jpg', alt: 'Музей' },
-  { id: 2, src: 'img/landscape/large/water-lilies.jpg', alt: 'Кувшинки' },
-  { id: 3, src: 'img/landscape/large/well-of-life.jpg', alt: 'Колодец' },
-  { id: 4, src: 'img/landscape/large/spring-alley.jpg', alt: 'Дорога в лесу' },
-  { id: 5, src: 'img/painting/large/rescuers.jpg', alt: 'Спасение' },
-  { id: 6, src: 'img/painting/large/old-friend.jpg', alt: 'Старый друг' },
-  { id: 7, src: 'img/still-life/large/stil-life-with-th-head-o-a-plaste-horse.jpg', alt: 'Гипсовая голова лошади' }
+  { id: 1, src: '/painting/large/museum.jpg', alt: 'Музей' },
+  { id: 2, src: '/landscape/large/water-lilies.jpg', alt: 'Кувшинки' },
+  { id: 3, src: '/landscape/large/well-of-life.jpg', alt: 'Колодец' },
+  { id: 4, src: '/landscape/large/spring-alley.jpg', alt: 'Дорога в лесу' },
+  { id: 5, src: '/painting/large/rescuers.jpg', alt: 'Спасение' },
+  { id: 6, src: '/painting/large/old-friend.jpg', alt: 'Старый друг' },
+  { id: 7, src: '/still-life/large/stil-life-with-th-head-o-a-plaste-horse.jpg', alt: 'Гипсовая голова лошади' }
 ]
 </script>
 <style>
