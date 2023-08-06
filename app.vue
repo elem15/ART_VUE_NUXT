@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div class="container">
     <HeaderView />
-    <NuxtPage />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
     <FooterView />
   </div>
 </template>
