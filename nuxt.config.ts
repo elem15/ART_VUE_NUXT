@@ -26,8 +26,8 @@ export default defineNuxtConfig({
     inject: true,
     quality: 80,
     format: ['webp', 'jpg', 'png', 'svg'],
-    domains: ['nuxtjs.org'],
-    dir: 'public/img'
+    domains: ['umlxyrmekufynqaatflf.supabase.co'],
+    dir: 'public'
   },
   css: ['~/assets/css/global.css', '~/assets/css/normalize.css'],
   swiper: {
