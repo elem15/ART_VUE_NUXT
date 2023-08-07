@@ -18,8 +18,16 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/devtools',
     'nuxt-swiper',
-    '@nuxtjs/supabase'
+    '@nuxtjs/supabase',
+    'yandex-metrika-module-nuxt3'
   ],
+  yandexMetrika: {
+    id: '61602646',
+    clickmap: true,
+    trackLinks: true,
+    accurateTrackBounce: true,
+    webvisor: true
+  },
   image: {
     inject: true,
     quality: 80,
