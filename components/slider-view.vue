@@ -27,7 +27,7 @@
 const slides = [
   { id: '1', src: 'https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/slider/museum.jpg', alt: 'Музей' },
   { id: '2', src: 'https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/slider/water-lilies.jpg', alt: 'Кувшинки' },
-  { id: '3', src: 'https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/slider/water-lilies.jpg', alt: 'Колодец' },
+  { id: '3', src: 'https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/slider/spring-alley.jpg', alt: 'Колодец' },
   { id: '4', src: 'https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/slider/well-of-life.jpg', alt: 'Дорога в лесу' },
   { id: '5', src: 'https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/slider/rescuers.jpg', alt: 'Спасение' },
   { id: '6', src: 'https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/slider/old-friend.jpg', alt: 'Старый друг' },
