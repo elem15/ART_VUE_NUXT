@@ -1,42 +1,59 @@
 <!-- eslint-disable vue/html-self-closing -->
 <template>
-  <div v-if="loading" class="swiper-lazy-preloader"></div>
-  <Swiper
-    v-else
-    :modules="[SwiperAutoplay, SwiperEffectFade]"
-    :slides-per-view="1"
-    :loop="true"
-    :effect="'fade'"
-    :speed="2000"
-    :autoplay="{
-      delay: 3000,
-      disableOnInteraction: true,
-    }"
-    :fade-effect="{
-      crossFade:
-        true,
-    }"
-  >
-    <SwiperSlide v-for="slide in slides" :key="slide.id">
-      <nuxt-img :src="slide.src" :alt="slide.alt" loading="lazy" />
-    </SwiperSlide>
-  </Swiper>
+  <div>
+    <div v-if="errors">
+      Data loading error
+    </div>
+    <div v-if="loading" class="swiper-lazy-preloader"></div>
+    <Swiper
+      v-else
+      :lazy="true"
+      :modules="[SwiperAutoplay, SwiperEffectFade]"
+      :slides-per-view="1"
+      :loop="true"
+      :effect="'fade'"
+      :speed="2000"
+      :autoplay="{
+        delay: 3000,
+        disableOnInteraction: true,
+      }"
+      :fade-effect="{
+        crossFade:
+          true,
+      }"
+    >
+      <SwiperSlide v-for="slide in slides" :key="slide.id">
+        <nuxt-img :src="slide.src" :alt="slide.alt" />
+      </SwiperSlide>
+    </Swiper>
+  </div>
 </template>
 
 <script setup lang="ts">
-const slides = [
-  { id: '1', src: 'https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/slider/museum.jpg', alt: 'Музей' },
-  { id: '2', src: 'https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/slider/water-lilies.jpg', alt: 'Кувшинки' },
-  { id: '3', src: 'https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/slider/spring-alley.jpg', alt: 'Колодец' },
-  { id: '4', src: 'https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/slider/well-of-life.jpg', alt: 'Дорога в лесу' },
-  { id: '5', src: 'https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/slider/rescuers.jpg', alt: 'Спасение' },
-  { id: '6', src: 'https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/slider/old-friend.jpg', alt: 'Старый друг' },
-  { id: '7', src: 'https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/slider/stil-life-with-th-head-o-a-plaste-horse.jpg', alt: 'Гипсовая голова лошади' }
-]
+import { Database } from '../supabase/database.types'
+const client = useSupabaseClient<Database>()
+const slides = ref<SliderPicture[]>([])
+const errors = ref('')
 const loading = ref(true)
-onMounted(() => setTimeout(() => { loading.value = false }, 200))
+onMounted(async () => {
+  setTimeout(() => { loading.value = false }, 200)
+  try {
+    loading.value = false
+    const { data, error } = await client
+      .from('main')
+      .select('alt, src, id')
+    if (data?.length) {
+      slides.value = data
+    } else if (error) {
+      errors.value = error.message
+      throw new Error(error.message)
+    }
+  } catch (error) {
+    alert(error)
+  }
+})
 </script>
-<style>
+<style scoped>
 @keyframes moving {
     100% {transform: rotate(-360deg);}
 }
@@ -70,6 +87,10 @@ onMounted(() => setTimeout(() => { loading.value = false }, 200))
 .swiper-container {
   padding-top: 50px;
   padding-bottom: 50px;
+}
+
+img {
+  box-shadow: -5px 5px 10px lightgray;
 }
 
 @media (max-width: 575px) {
