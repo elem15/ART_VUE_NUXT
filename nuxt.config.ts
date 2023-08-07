@@ -2,10 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true, vscode: {} },
   modules: [
-    // Simple usage
     '@nuxtjs/eslint-module',
-
-    // With options
     ['@nuxtjs/eslint-module', {
       cache: true,
       include: ['**/*.{js,jsx,ts,tsx,vue}'],
@@ -20,13 +17,14 @@ export default defineNuxtConfig({
     }],
     '@nuxt/image',
     '@nuxt/devtools',
-    'nuxt-swiper'
+    'nuxt-swiper',
+    '@nuxtjs/supabase'
   ],
   image: {
     inject: true,
     quality: 80,
     format: ['webp', 'jpg', 'png', 'svg'],
-    domains: ['umlxyrmekufynqaatflf.supabase.co'],
+    domains: ['nuxtjs.org', 'vercel.app', 'umlxyrmekufynqaatflf.supabase.co'],
     dir: 'public'
   },
   css: ['~/assets/css/global.css', '~/assets/css/normalize.css'],
@@ -36,5 +34,10 @@ export default defineNuxtConfig({
     // prefix: 'Swiper',
     // styleLang: 'css',
     // modules: ['navigation', 'pagination'], // all modules are imported by default
+  },
+  supabase: {
+    url: process.env.SUPABASE_URL as string,
+    key: process.env.SUPABASE_KEY as string,
+    redirect: false
   }
 })

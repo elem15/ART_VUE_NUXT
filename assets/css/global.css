@@ -447,6 +447,10 @@ hr {
   gap: 2rem;
 }
 
+.socials-wrapper:last-child {
+  margin-right: 10px;
+}
+
 .socials-wrapper__item-link {
   transition: .3s;
 }
