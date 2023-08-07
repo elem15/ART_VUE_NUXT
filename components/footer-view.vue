@@ -72,7 +72,7 @@
       </ul>
     </div>
     <div class="copyright">
-      Copyright © 2021 by Vlad Berezin
+      Copyright © 2023 by Vlad Berezin
     </div>
   </footer>
 </template>
