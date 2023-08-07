@@ -74,10 +74,15 @@ a {
   }
 }
 
-@media only screen and (min-width: 575px) and (orientation: landscape) {
+@media only screen and (min-width: 575px) {
   .nav-wrapper__item-link:hover {
-    color: rgb(0, 10, 95);
+    color: rgb(66, 2, 130);
     text-shadow: 0 0 1rem rgba(155, 5, 255, 0.4);
+  }
+
+  .nav-wrapper__item-link:active {
+    color: rgb(167, 88, 246);
+    text-shadow: 0 0 3rem rgba(155, 5, 255, 0.4);
   }
 }
 
