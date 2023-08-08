@@ -329,8 +329,8 @@ main {
 }
 
 .article {
-  margin-left: 5px;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 @media (max-width: 575px) {
@@ -401,19 +401,15 @@ hr {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  margin: 2rem auto 0;
   gap: 10px;
   justify-content: space-around;
-}
-
-.section-footer.sticky {
-  bottom: 1rem;
-  position: fixed;
 }
 
 @media (max-width: 575px) {
   .section-footer {
     bottom: 3rem;
+    position: fixed;
   }
 
   .section-footer.sticky {
