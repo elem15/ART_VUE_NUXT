@@ -4,7 +4,7 @@
     <div v-if="errors">
       Data loading error
     </div>
-    <!-- <div v-if="loading" class="swiper-lazy-preloader"></div> -->
+    <div v-if="loading" class="swiper-lazy-preloader"></div>
     <Swiper
       v-else
       :modules="[SwiperAutoplay, SwiperEffectFade]"
