@@ -1,11 +1,10 @@
 <template>
-  <div class="container">
-    <NuxtLayout>
-      <HeaderView />
-      <NuxtPage />
-      <FooterView />
-    </NuxtLayout>
-  </div>
+  <NuxtLayout>
+    <div class="container" />
+    <HeaderView />
+    <NuxtPage />
+    <FooterView />
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">

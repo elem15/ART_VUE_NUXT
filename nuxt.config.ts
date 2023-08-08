@@ -35,7 +35,7 @@ export default defineNuxtConfig({
     domains: ['nuxtjs.org', 'vercel.app', 'umlxyrmekufynqaatflf.supabase.co'],
     dir: 'public'
   },
-  css: ['~/assets/css/global.css', '~/assets/css/normalize.css'],
+  css: ['~/assets/css/global.css', '~/assets/css/normalize.css', '~/assets/css/accordion.css'],
   swiper: {
     // Swiper options
     // ----------------------
