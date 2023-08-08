@@ -15,11 +15,15 @@
             <a href="gallery.html" class="nav-wrapper__item-link nav-wrapper__item-link--active">Галерея</a>
           </li>
           <li class="nav-wrapper__item">
-            <a href="about-artist.html" class="nav-wrapper__item-link nav-wrapper__item-link--active">О
-              художнике</a>
+            <RouterLink to="/about" class="nav-wrapper__item-link nav-wrapper__item-link--active">
+              О
+              художнике
+            </RouterLink>
           </li>
           <li class="nav-wrapper__item">
-            <a href="articles.html" class="nav-wrapper__item-link nav-wrapper__item-link--active">Статьи</a>
+            <RouterLink to="/articles" class="nav-wrapper__item-link nav-wrapper__item-link--active">
+              Статьи
+            </RouterLink>
           </li>
           <li class="nav-wrapper__item">
             <RouterLink

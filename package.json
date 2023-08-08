@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.32.0",
-    "nuxt-swiper": "^1.2.0"
+    "nuxt-swiper": "^1.2.0",
+    "yandex-metrika-module-nuxt3": "^1.5.3"
   }
 }

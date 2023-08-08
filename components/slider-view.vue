@@ -7,7 +7,6 @@
     <div v-if="loading" class="swiper-lazy-preloader"></div>
     <Swiper
       v-else
-      :lazy="true"
       :modules="[SwiperAutoplay, SwiperEffectFade]"
       :slides-per-view="1"
       :loop="true"
@@ -24,6 +23,7 @@
     >
       <SwiperSlide v-for="slide in slides" :key="slide.id">
         <nuxt-img :src="slide.src" :alt="slide.alt" />
+        <div class="swiper-lazy-preloader"></div>
       </SwiperSlide>
     </Swiper>
   </div>
@@ -36,9 +36,7 @@ const slides = ref<SliderPicture[]>([])
 const errors = ref('')
 const loading = ref(true)
 onMounted(async () => {
-  setTimeout(() => { loading.value = false }, 200)
   try {
-    loading.value = false
     const { data, error } = await client
       .from('main')
       .select('alt, src, id')
@@ -50,12 +48,14 @@ onMounted(async () => {
     }
   } catch (error) {
     alert(error)
+  } finally {
+    loading.value = false
   }
 })
 </script>
 <style scoped>
 @keyframes moving {
-    100% {transform: rotate(-360deg);}
+    100% {transform: rotate(360deg);}
 }
 .swiper-lazy-preloader {
   animation: moving 1s infinite linear;

@@ -3,3 +3,8 @@ type SliderPicture = {
   src: string
   alt: string
 }
+type Article = {
+  id: string
+  title: string
+  content: string
+}
