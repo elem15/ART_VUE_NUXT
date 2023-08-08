@@ -383,7 +383,6 @@ hr {
 
 .contacts {
   text-align: center;
-  ;
 }
 
 .contacts a {
@@ -403,13 +402,12 @@ hr {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 1rem;
+  gap: 10px;
   justify-content: space-around;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 }
 
 .section-footer.sticky {
-  margin-bottom: auto;
   bottom: 1rem;
   position: fixed;
 }
@@ -417,6 +415,12 @@ hr {
 @media (max-width: 575px) {
   .section-footer {
     bottom: 3rem;
+  }
+
+  .section-footer.sticky {
+    bottom: 1rem;
+    position: relative;
+    margin-top: 2.5rem;
   }
 }
 
@@ -432,7 +436,7 @@ hr {
   margin: 0;
   list-style: none;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.7rem;
 }
 
 .socials-wrapper:last-child {
