@@ -28,27 +28,26 @@ useSeoMeta({
 
 const client = useSupabaseClient<ArticlesDB>()
 
-const articles = ref<Article[]>([])
+const articles: Ref<Article[]> = ref([])
 const errors = ref('')
 const loading = ref(true)
-
-onMounted(async () => {
-  try {
-    const { data, error } = await client
+try {
+  const { data, error } = await useAsyncData(
+    'articles',
+    async () => await client
       .from('articles')
-      .select('title, content, id')
-    if (data?.length) {
-      articles.value = data
-    } else if (error) {
-      errors.value = error.message
-      throw new Error(error.message)
-    }
-  } catch (error) {
-    alert(error)
-  } finally {
-    loading.value = false
+      .select('title, content, id'))
+  if (data?.value?.data?.length) {
+    articles.value = data.value?.data
+  } else if (error && error.value) {
+    errors.value = error.value.message
+    throw new Error(error.value.message)
   }
-})
+} catch (error) {
+  alert(error)
+} finally {
+  loading.value = false
+}
 </script>
 
 <style scoped>
