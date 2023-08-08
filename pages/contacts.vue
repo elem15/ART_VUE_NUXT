@@ -11,7 +11,7 @@
           <h2>phone: <a href="tel:+7-981-775-37-48">+7-981-775-37-48</a></h2>
 
           <hr>
-          <NuxtImg src="https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/artist/vadiy.jpg" alt="Vadiy" />
+          <NuxtImg loading="lazy" src="https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/artist/vadiy.jpg" alt="Vadiy" />
         </div>
       </div>
       <hr>
