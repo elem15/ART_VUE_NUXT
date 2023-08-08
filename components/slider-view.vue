@@ -6,7 +6,7 @@
     </div>
     <div v-if="loading" class="swiper-lazy-preloader"></div>
     <Swiper
-      v-else
+      v-else-if="slides.length"
       :modules="[SwiperAutoplay, SwiperEffectFade]"
       :slides-per-view="1"
       :loop="true"
@@ -35,23 +35,21 @@ const client = useSupabaseClient<Database>()
 const slides = ref<SliderPicture[]>([])
 const errors = ref('')
 const loading = ref(true)
-onMounted(async () => {
-  try {
-    const { data, error } = await client
-      .from('main')
-      .select('alt, src, id')
-    if (data?.length) {
-      slides.value = data
-    } else if (error) {
-      errors.value = error.message
-      throw new Error(error.message)
-    }
-  } catch (error) {
-    alert(error)
-  } finally {
-    loading.value = false
+try {
+  const { data, error } = await client
+    .from('main')
+    .select('alt, src, id')
+  if (data?.length) {
+    slides.value = data
+  } else if (error?.message) {
+    errors.value = error.message
+    throw new Error(error.message)
   }
-})
+} catch (error) {
+  alert(error)
+} finally {
+  loading.value = false
+}
 </script>
 <style scoped>
 @keyframes moving {
