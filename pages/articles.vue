@@ -49,13 +49,3 @@ try {
   loading.value = false
 }
 </script>
-
-<style scoped>
-@keyframes moving {
-    100% {transform: rotate(360deg);}
-}
-.swiper-lazy-preloader {
-  margin-top: 30px;
-  animation: moving 1s infinite linear;
-}
-</style>

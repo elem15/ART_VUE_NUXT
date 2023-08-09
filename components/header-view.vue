@@ -12,7 +12,9 @@
             </RouterLink>
           </li>
           <li class="nav-wrapper__item">
-            <a href="gallery.html" class="nav-wrapper__item-link nav-wrapper__item-link--active">Галерея</a>
+            <RouterLink to="/gallery" class="nav-wrapper__item-link nav-wrapper__item-link--active">
+              Галерея
+            </RouterLink>
           </li>
           <li class="nav-wrapper__item">
             <RouterLink to="/about" class="nav-wrapper__item-link nav-wrapper__item-link--active">

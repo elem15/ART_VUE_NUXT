@@ -30,8 +30,8 @@
 </template>
 
 <script setup lang="ts">
-import { Database } from '../supabase/database.types'
-const client = useSupabaseClient<Database>()
+import { MainDB } from '../supabase/database.types'
+const client = useSupabaseClient<MainDB>()
 const slides = ref<SliderPicture[]>([])
 const errors = ref('')
 const loading = ref(true)
@@ -51,13 +51,8 @@ try {
   loading.value = false
 }
 </script>
+
 <style scoped>
-@keyframes moving {
-    100% {transform: rotate(360deg);}
-}
-.swiper-lazy-preloader {
-  animation: moving 1s infinite linear;
-}
 .swiper-slide {
   display: flex;
   justify-content: center;
