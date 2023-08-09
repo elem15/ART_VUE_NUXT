@@ -1,15 +1,22 @@
 <template>
   <main>
     <div v-if="loading" class="swiper-lazy-preloader" />
-    <div v-else-if="errors">
+    <div v-if="errors">
       Data loading error
     </div>
-    <div v-else class="gallery-wrapper-styles">
+    <div v-if="galleries.length" class="gallery-wrapper-styles">
       <ul class="box-container three-cols gallery gallery-styles">
         <li v-for="gallery in galleries" :key="gallery.id" class="box">
           <div class="inner">
             <RouterLink :to="`/gallery/${gallery.title}`" class="glightbox">
-              <nuxt-img :src="gallery.src" :alt="gallery.alt" class="art-styles" />
+              <nuxt-img
+                :src="gallery.src"
+                :alt="gallery.alt"
+                loading="lazy"
+                preload
+                class="art-styles"
+                @load="loading = false"
+              />
               <h4 class="picture-styles">
                 {{ gallery.alt }}
               </h4>
@@ -38,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import { GalleryDB } from '../supabase/database.types'
+import { GalleryDB } from '../../supabase/database.types'
 const client = useSupabaseClient<GalleryDB>()
 const galleries = ref<Gallery[]>([])
 const errors = ref('')
@@ -55,7 +62,5 @@ try {
   }
 } catch (error) {
   alert(error)
-} finally {
-  loading.value = false
 }
 </script>

@@ -1,10 +1,10 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <main>
-    <div v-if="errors">
+    <div v-if="loading" class="swiper-lazy-preloader" />
+    <div v-else-if="errors">
       Data loading error
     </div>
-    <div v-if="loading" class="swiper-lazy-preloader" />
     <article v-else class="article">
       <div v-for="(article, idx) in articles" :key="article.id" class="accordion">
         <input type="radio" name="select" class="accordion-select" :checked="idx === 0">

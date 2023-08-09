@@ -6,7 +6,7 @@
     </div>
     <div v-if="loading" class="swiper-lazy-preloader"></div>
     <Swiper
-      v-else-if="slides.length"
+      v-if="slides.length"
       :modules="[SwiperAutoplay, SwiperEffectFade]"
       :slides-per-view="1"
       :loop="true"
@@ -22,8 +22,7 @@
       }"
     >
       <SwiperSlide v-for="slide in slides" :key="slide.id">
-        <nuxt-img :src="slide.src" :alt="slide.alt" />
-        <div class="swiper-lazy-preloader"></div>
+        <nuxt-img :src="slide.src" :alt="slide.alt" @load="loading = false" />
       </SwiperSlide>
     </Swiper>
   </div>
@@ -47,8 +46,6 @@ try {
   }
 } catch (error) {
   alert(error)
-} finally {
-  loading.value = false
 }
 </script>
 
