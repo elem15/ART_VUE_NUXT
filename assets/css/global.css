@@ -471,3 +471,13 @@ hr {
   margin: 0 2rem;
   color: #757f96;
 }
+
+@keyframes moving {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.swiper-lazy-preloader {
+  animation: moving 1s infinite linear;
+}

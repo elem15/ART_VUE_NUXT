@@ -6,7 +6,7 @@
     </div>
     <div v-if="loading" class="swiper-lazy-preloader"></div>
     <Swiper
-      v-else-if="slides.length"
+      v-if="slides.length"
       :modules="[SwiperAutoplay, SwiperEffectFade]"
       :slides-per-view="1"
       :loop="true"
@@ -22,16 +22,15 @@
       }"
     >
       <SwiperSlide v-for="slide in slides" :key="slide.id">
-        <nuxt-img :src="slide.src" :alt="slide.alt" />
-        <div class="swiper-lazy-preloader"></div>
+        <nuxt-img :src="slide.src" :alt="slide.alt" @load="loading = false" />
       </SwiperSlide>
     </Swiper>
   </div>
 </template>
 
 <script setup lang="ts">
-import { Database } from '../supabase/database.types'
-const client = useSupabaseClient<Database>()
+import { MainDB } from '../supabase/database.types'
+const client = useSupabaseClient<MainDB>()
 const slides = ref<SliderPicture[]>([])
 const errors = ref('')
 const loading = ref(true)
@@ -47,17 +46,10 @@ try {
   }
 } catch (error) {
   alert(error)
-} finally {
-  loading.value = false
 }
 </script>
+
 <style scoped>
-@keyframes moving {
-    100% {transform: rotate(360deg);}
-}
-.swiper-lazy-preloader {
-  animation: moving 1s infinite linear;
-}
 .swiper-slide {
   display: flex;
   justify-content: center;

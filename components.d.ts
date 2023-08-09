@@ -8,3 +8,9 @@ type Article = {
   title: string
   content: string
 }
+type Gallery = {
+  id: string
+  src: string
+  alt: string
+  title: string
+}
