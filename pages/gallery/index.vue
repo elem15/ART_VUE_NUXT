@@ -1,9 +1,6 @@
 <template>
   <main>
     <div v-if="loading" class="swiper-lazy-preloader" />
-    <div v-if="errors">
-      Data loading error
-    </div>
     <div v-if="galleries.length" class="gallery-wrapper-styles">
       <ul class="box-container three-cols gallery gallery-styles">
         <li v-for="gallery in galleries" :key="gallery.id" class="box">
@@ -46,21 +43,18 @@
 
 <script setup lang="ts">
 import { GalleryDB } from '../../supabase/database.types'
+
 const client = useSupabaseClient<GalleryDB>()
 const galleries = ref<Gallery[]>([])
-const errors = ref('')
 const loading = ref(true)
-try {
-  const { data, error } = await client
-    .from('galleries')
-    .select('alt, src, id, title')
-  if (data?.length) {
-    galleries.value = data
-  } else if (error?.message) {
-    errors.value = error.message
-    throw new Error(error.message)
-  }
-} catch (error) {
-  alert(error)
+
+const { data, error } = await client
+  .from('galleries')
+  .select('alt, src, id, title')
+
+if (data?.length) {
+  galleries.value = data
+} else if (error) {
+  showError({ statusCode: 404, statusMessage: error.message })
 }
 </script>

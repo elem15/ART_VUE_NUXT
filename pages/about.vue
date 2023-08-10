@@ -18,10 +18,7 @@
           <p class="picture-description-article" />
         </div>
       </div>
-      <div v-if="errors">
-        Data loading error
-      </div>
-      <div v-if="loading" class="swiper-lazy-preloader" />
+      <div v-if="pending" class="swiper-lazy-preloader" />
       <article v-else class="article">
         <div v-for="(about, idx) in aboutInfo" :key="about.id" class="accordion">
           <input type="radio" name="select" class="accordion-select" :checked="idx === 0">
@@ -47,23 +44,16 @@ useSeoMeta({
 const client = useSupabaseClient<ArticlesDB>()
 
 const aboutInfo: Ref<Article[]> = ref([])
-const errors = ref('')
-const loading = ref(true)
-try {
-  const { data, error } = await useAsyncData(
-    'about',
-    async () => await client
-      .from('about')
-      .select('title, content, id'))
-  if (data?.value?.data?.length) {
-    aboutInfo.value = data.value?.data
-  } else if (error && error.value) {
-    errors.value = error.value.message
-    throw new Error(error.value.message)
-  }
-} catch (error) {
-  alert(error)
-} finally {
-  loading.value = false
+
+const { data, pending, error } = await useAsyncData(
+  'about',
+  async () => await client
+    .from('about')
+    .select('title, content, id'))
+
+if (data?.value?.data?.length) {
+  aboutInfo.value = data.value?.data
+} else if (error) {
+  showError({ statusCode: 404, statusMessage: 'Data is unavailable' })
 }
 </script>

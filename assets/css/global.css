@@ -12,13 +12,10 @@ a {
   text-decoration: none;
 }
 
-body,
 .container {
   position: fixed;
-  width: 100vw;
   height: 100vh;
   top: 0;
-  background: url('/img/background.jpg') fixed;
 }
 
 @media (max-width: 575px) {
