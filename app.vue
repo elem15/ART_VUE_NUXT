@@ -1,6 +1,5 @@
 <template>
   <NuxtLayout>
-    <div class="container" />
     <HeaderView />
     <NuxtPage />
     <FooterView />
