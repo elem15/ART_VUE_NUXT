@@ -1,12 +1,11 @@
 <!-- eslint-disable vue/html-self-closing -->
 <template>
   <div>
-    <div v-if="errors">
+    <div v-if="loading" class="swiper-lazy-preloader" />
+    <div v-else-if="errors">
       Data loading error
     </div>
-    <div v-if="loading" class="swiper-lazy-preloader"></div>
     <Swiper
-      v-if="slides.length"
       :modules="[SwiperAutoplay, SwiperEffectFade]"
       :slides-per-view="1"
       :loop="true"
@@ -22,7 +21,7 @@
       }"
     >
       <SwiperSlide v-for="slide in slides" :key="slide.id">
-        <nuxt-img :src="slide.src" :alt="slide.alt" @load="loading = false" />
+        <nuxt-img :src="slide.src" :alt="slide.alt" quality="90" @load="loading = false" />
       </SwiperSlide>
     </Swiper>
   </div>

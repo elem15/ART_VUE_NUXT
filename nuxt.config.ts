@@ -30,7 +30,8 @@ export default defineNuxtConfig({
   },
   image: {
     inject: true,
-    quality: 80,
+    loading: 'lazy',
+    quality: 100,
     format: ['webp', 'jpg', 'png', 'svg'],
     domains: ['nuxtjs.org', 'vercel.app', 'umlxyrmekufynqaatflf.supabase.co'],
     dir: 'public'

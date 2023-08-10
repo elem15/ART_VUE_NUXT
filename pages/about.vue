@@ -5,7 +5,11 @@
     <div class="gallery-wrapper-styles">
       <div class="picture-left">
         <div>
-          <NuxtImg loading="lazy" src="https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/artist/vadiy.jpg" alt="Vadiy" />
+          <nuxt-img
+            loading="lazy"
+            src="https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/artist/vadiy.jpg"
+            alt="Vadiy"
+          />
         </div>
         <div class="picture-description">
           <h3 class="picture-description-header">
