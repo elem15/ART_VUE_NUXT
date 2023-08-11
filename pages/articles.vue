@@ -2,7 +2,7 @@
 <template>
   <main>
     <SpinnerView v-if="pending" />
-    <article v-else class="article">
+    <article v-else class="article" :class="pending && 'hidden'">
       <div v-for="(article, idx) in articles" :key="article.id" class="accordion">
         <input type="radio" name="select" class="accordion-select" :checked="idx === 0">
         <div class="accordion-title">

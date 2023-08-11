@@ -2,7 +2,7 @@
 <!-- eslint-disable vue/html-closing-bracket-spacing -->
 <template>
   <main>
-    <div class="gallery-wrapper-styles">
+    <div class="gallery-wrapper-styles" :class="loading && 'hidden'">
       <div class="picture-left">
         <div>
           <nuxt-img

@@ -3,13 +3,14 @@
   <div>
     <SpinnerView v-if="loading" />
     <Swiper
+      :class="loading && 'hidden'"
       :modules="[SwiperAutoplay, SwiperEffectFade]"
       :slides-per-view="1"
       :loop="true"
       :effect="'fade'"
-      :speed="2000"
+      :speed="1000"
       :autoplay="{
-        delay: 3000,
+        delay: 2000,
         disableOnInteraction: true,
       }"
       :fade-effect="{
@@ -17,8 +18,13 @@
           true,
       }"
     >
-      <SwiperSlide v-for="slide in slides" :key="slide.id">
-        <nuxt-img :src="slide.src" :alt="slide.alt" quality="90" @load="loading = false" />
+      <SwiperSlide v-for="(slide, idx) in slides" :key="slide.id">
+        <nuxt-img
+          :src="slide.src"
+          :alt="slide.alt"
+          quality="90"
+          @load="() => { if(idx === slides.length - 1) loading = false }"
+        />
       </SwiperSlide>
     </Swiper>
   </div>
@@ -63,6 +69,7 @@ if (data?.length) {
 }
 
 .swiper {
+  transition: all 0.7s;
   width: 600px;
 }
 

@@ -131,6 +131,7 @@ main {
 }
 
 .gallery-wrapper-styles {
+  transition: all 0.7s;
   margin: 0 auto 25px;
   max-width: 1200px;
   display: flex;
@@ -138,6 +139,11 @@ main {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: flex-start;
+}
+
+.hidden {
+  filter: blur(1rem);
+  opacity: 0;
 }
 
 @media (max-width: 575px) {
@@ -330,6 +336,7 @@ main {
 .article {
   margin-left: 10px;
   margin-right: 10px;
+  transition: all 0.7s;
 }
 
 @media (max-width: 575px) {

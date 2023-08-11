@@ -3,9 +3,9 @@
     <div v-if="loading" class="fog">
       <SpinnerView />
     </div>
-    <div v-if="galleries.length" class="gallery-wrapper-styles" :style="{visibility: `${loading ? 'hidden' : 'visible'}`}">
+    <div v-if="galleries.length" class="gallery-wrapper-styles" :class="loading && 'hidden'">
       <ul class="box-container three-cols gallery gallery-styles">
-        <li v-for="gallery in galleries" :key="gallery.id" class="box">
+        <li v-for="(gallery, idx) in galleries" :key="gallery.id" class="box">
           <div class="inner">
             <NuxtLink :to="`/gallery/${gallery.title}`" class="glightbox">
               <nuxt-img
@@ -16,7 +16,7 @@
                 loading="lazy"
                 preload
                 class="art-styles"
-                @load="loading = false"
+                @load="() => { if(idx === galleries.length -1) loading = false }"
               />
               <h4 class="picture-styles">
                 {{ gallery.alt }}
@@ -64,8 +64,9 @@ if (data?.length) {
 }
 </script>
 
-<style>
+<style scoped>
 .fog {
   z-index: 10;
 }
+
 </style>
