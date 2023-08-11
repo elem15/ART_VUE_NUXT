@@ -16,6 +16,7 @@
       </div>
       <hr>
     </div>
+    <FooterView />
   </main>
 </template>
 

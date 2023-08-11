@@ -1,10 +1,7 @@
 <!-- eslint-disable vue/html-self-closing -->
 <template>
   <div>
-    <div v-if="loading" class="swiper-lazy-preloader" />
-    <div v-else-if="errors">
-      Data loading error
-    </div>
+    <SpinnerView v-if="loading" />
     <Swiper
       :modules="[SwiperAutoplay, SwiperEffectFade]"
       :slides-per-view="1"
@@ -31,20 +28,16 @@
 import { MainDB } from '../supabase/database.types'
 const client = useSupabaseClient<MainDB>()
 const slides = ref<SliderPicture[]>([])
-const errors = ref('')
 const loading = ref(true)
-try {
-  const { data, error } = await client
-    .from('main')
-    .select('alt, src, id')
-  if (data?.length) {
-    slides.value = data
-  } else if (error?.message) {
-    errors.value = error.message
-    throw new Error(error.message)
-  }
-} catch (error) {
-  alert(error)
+
+const { data, error } = await client
+  .from('main')
+  .select('alt, src, id')
+
+if (data?.length) {
+  slides.value = data
+} else if (error) {
+  showError({ statusCode: 404, statusMessage: error.message })
 }
 </script>
 

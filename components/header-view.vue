@@ -7,33 +7,33 @@
       <nav class="nav">
         <ul class="nav-wrapper">
           <li class="nav-wrapper__item">
-            <RouterLink to="/" class="nav-wrapper__item-link nav-wrapper__item-link--active">
+            <NuxtLink to="/" class="nav-wrapper__item-link nav-wrapper__item-link--active">
               Главная
-            </RouterLink>
+            </NuxtLink>
           </li>
           <li class="nav-wrapper__item">
-            <RouterLink to="/gallery" class="nav-wrapper__item-link nav-wrapper__item-link--active">
+            <NuxtLink to="/gallery" class="nav-wrapper__item-link nav-wrapper__item-link--active">
               Галерея
-            </RouterLink>
+            </NuxtLink>
           </li>
           <li class="nav-wrapper__item">
-            <RouterLink to="/about" class="nav-wrapper__item-link nav-wrapper__item-link--active">
+            <NuxtLink to="/about" class="nav-wrapper__item-link nav-wrapper__item-link--active">
               О
               художнике
-            </RouterLink>
+            </NuxtLink>
           </li>
           <li class="nav-wrapper__item">
-            <RouterLink to="/articles" class="nav-wrapper__item-link nav-wrapper__item-link--active">
+            <NuxtLink to="/articles" class="nav-wrapper__item-link nav-wrapper__item-link--active">
               Статьи
-            </RouterLink>
+            </NuxtLink>
           </li>
           <li class="nav-wrapper__item">
-            <RouterLink
+            <NuxtLink
               to="/contacts"
               class="nav-wrapper__item-link nav-wrapper__item-link--active"
             >
               Контакты
-            </RouterLink>
+            </NuxtLink>
           </li>
         </ul>
       </nav>

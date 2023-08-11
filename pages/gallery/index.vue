@@ -1,17 +1,18 @@
 <template>
   <main>
-    <div v-if="loading" class="swiper-lazy-preloader" />
-    <div v-if="errors">
-      Data loading error
+    <div v-if="loading" class="fog">
+      <SpinnerView />
     </div>
-    <div v-if="galleries.length" class="gallery-wrapper-styles">
+    <div v-if="galleries.length" class="gallery-wrapper-styles" :style="{visibility: `${loading ? 'hidden' : 'visible'}`}">
       <ul class="box-container three-cols gallery gallery-styles">
         <li v-for="gallery in galleries" :key="gallery.id" class="box">
           <div class="inner">
-            <RouterLink :to="`/gallery/${gallery.title}`" class="glightbox">
+            <NuxtLink :to="`/gallery/${gallery.title}`" class="glightbox">
               <nuxt-img
                 :src="gallery.src"
                 :alt="gallery.alt"
+                width="250"
+                height="auto"
                 loading="lazy"
                 preload
                 class="art-styles"
@@ -20,16 +21,16 @@
               <h4 class="picture-styles">
                 {{ gallery.alt }}
               </h4>
-            </RouterLink>
+            </NuxtLink>
           </div>
         </li>
       </ul>
       <hr>
       <div class="picture-right">
         <div>
-          <RouterLink to="/about">
-            <img src="https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/artist/vadiy.jpg" alt="Vadiy">
-          </RouterLink>
+          <NuxtLink to="/about">
+            <nuxt-img src="https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/artist/vadiy.jpg" alt="Vadiy" />
+          </NuxtLink>
         </div>
         <div class="picture-description">
           <h3 class="picture-description-header">
@@ -41,26 +42,30 @@
         </div>
       </div>
     </div>
+    <FooterView />
   </main>
 </template>
 
 <script setup lang="ts">
 import { GalleryDB } from '../../supabase/database.types'
+
 const client = useSupabaseClient<GalleryDB>()
 const galleries = ref<Gallery[]>([])
-const errors = ref('')
 const loading = ref(true)
-try {
-  const { data, error } = await client
-    .from('galleries')
-    .select('alt, src, id, title')
-  if (data?.length) {
-    galleries.value = data
-  } else if (error?.message) {
-    errors.value = error.message
-    throw new Error(error.message)
-  }
-} catch (error) {
-  alert(error)
+
+const { data, error } = await client
+  .from('galleries')
+  .select('alt, src, id, title')
+
+if (data?.length) {
+  galleries.value = data
+} else if (error) {
+  showError({ statusCode: 404, statusMessage: error.message })
 }
 </script>
+
+<style>
+.fog {
+  z-index: 10;
+}
+</style>
