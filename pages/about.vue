@@ -9,6 +9,7 @@
             loading="lazy"
             src="https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/artist/vadiy.jpg"
             alt="Vadiy"
+            @load="loading = false"
           />
         </div>
         <div class="picture-description">
@@ -18,7 +19,7 @@
           <p class="picture-description-article" />
         </div>
       </div>
-      <div v-if="pending" class="swiper-lazy-preloader" />
+      <SpinnerView v-if="pending || loading"/>
       <article v-else class="article">
         <div v-for="(about, idx) in aboutInfo" :key="about.id" class="accordion">
           <input type="radio" name="select" class="accordion-select" :checked="idx === 0">
@@ -29,6 +30,7 @@
         </div>
       </article>
     </div>
+    <FooterView />
   </main>
 </template>
 
@@ -44,6 +46,7 @@ useSeoMeta({
 const client = useSupabaseClient<ArticlesDB>()
 
 const aboutInfo: Ref<Article[]> = ref([])
+const loading = ref(true)
 
 const { data, pending, error } = await useAsyncData(
   'about',

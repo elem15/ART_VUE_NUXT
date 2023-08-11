@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <main>
-    <div v-if="pending" class="swiper-lazy-preloader" />
+    <SpinnerView v-if="pending" />
     <article v-else class="article">
       <div v-for="(article, idx) in articles" :key="article.id" class="accordion">
         <input type="radio" name="select" class="accordion-select" :checked="idx === 0">
@@ -11,6 +11,7 @@
         <div class="accordion-content" v-html="article.content" />
       </div>
     </article>
+    <FooterView />
   </main>
 </template>
 

@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/html-self-closing -->
 <template>
   <div>
-    <div v-if="loading" class="swiper-lazy-preloader" />
+    <SpinnerView v-if="loading" />
     <Swiper
       :modules="[SwiperAutoplay, SwiperEffectFade]"
       :slides-per-view="1"
