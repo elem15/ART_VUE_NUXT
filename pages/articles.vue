@@ -2,7 +2,7 @@
 <template>
   <main>
     <SpinnerView v-if="pending || loading" />
-    <article v-else class="article" :class="pending && 'hidden'">
+    <article class="article" :style="{opacity: loading ? 0 : 1, filter: loading ? 'blur(1rem)' : 'none'}">
       <div v-for="(article, idx) in articles" :key="article.id" class="accordion">
         <input type="radio" name="select" class="accordion-select" :checked="idx === 0">
         <div class="accordion-title">
@@ -33,7 +33,7 @@ const loading = ref(true)
 onMounted(() => {
   setTimeout(() => {
     loading.value = false
-  }, 500)
+  }, 300)
 })
 
 const { data, pending, error } = await useAsyncData(

@@ -1,7 +1,8 @@
 <template>
   <main>
-    <div>{{ params }}</div>
-    <div class="gallery-wrapper">
+    <SpinnerView v-if="loading" />
+    <div class="gallery-wrapper" :style="{opacity: loading ? 0 : 1, filter: loading ? 'blur(1rem)' : 'none'}">
+      <div>{{ params }}</div>
       <div class="picture">
         <div class="gallery-wrapper-picture">
           <nuxt-img src="https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/landscape/large/spring-alley.jpg" alt="Дорога в лесу" :quality="50" />
@@ -95,5 +96,16 @@
 <script setup lang="ts">
 const route = useRoute()
 const params = route.params.slug
+
+const loading = ref(true)
+
+// const onLoadEvent = () => {
+//   setTimeout(() => { loading.value = false }, 500)
+// }
+onMounted(() => {
+  setTimeout(() => {
+    loading.value = false
+  }, 500)
+})
 
 </script>

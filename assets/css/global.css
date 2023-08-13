@@ -89,10 +89,6 @@ main {
   position: relative;
 }
 
-.hidden {
-  display: none;
-}
-
 .section-picture {
   display: flex;
   justify-content: center;
@@ -107,7 +103,7 @@ main {
 .gallery-wrapper {
   margin: 0 auto;
   max-width: 1200px;
-
+  transition: all 0.7s;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

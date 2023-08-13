@@ -1,7 +1,7 @@
 <template>
   <main class="about">
     <SpinnerView v-if="loading" />
-    <div v-else :class="loading && 'hidden'">
+    <div :style="{opacity: loading ? 0 : 1, filter: loading ? 'blur(1rem)' : 'none'}" class="gallery-wrapper-styles">
       <div class="picture-left">
         <div class="contacts">
           <h3>
@@ -21,8 +21,8 @@
         </div>
       </div>
       <hr>
-      <FooterView :loading="loading" />
     </div>
+    <FooterView :loading="loading" />
   </main>
 </template>
 

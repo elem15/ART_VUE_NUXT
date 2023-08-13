@@ -3,14 +3,16 @@
 <template>
   <main>
     <SpinnerView v-if="pending || loading" />
-    <div v-else :class="loading && 'hidden'" class="gallery-wrapper-styles" >
+    <div :style="{opacity: loading ? 0 : 1, filter: loading ? 'blur(1rem)' : 'none'}" class="gallery-wrapper-styles" >
       <div class="picture-left">
         <div>
           <nuxt-img
             loading="lazy"
             src="https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/artist/vadiy.jpg"
             alt="Vadiy"
-            @load="loading = false"
+            @load="() => {
+              onLoadEvent()
+            }"
           />
         </div>
         <div class="picture-description">
@@ -49,6 +51,10 @@ const client = useSupabaseClient<ArticlesDB>()
 const aboutInfo: Ref<Article[]> = ref([])
 
 const loading = ref(true)
+
+const onLoadEvent = () => {
+  setTimeout(() => { loading.value = false }, 500)
+}
 onMounted(() => {
   setTimeout(() => {
     loading.value = false

@@ -42,8 +42,7 @@
         </div>
       </div>
     </div>
-    <FooterView :loading="loading" />
-  </main>
+    <FooterView :loading="loading" />  </main>
 </template>
 
 <script setup lang="ts">
