@@ -23,4 +23,4 @@ type GalleryItem = {
   description?: string
 }
 
-type Params = 'landscape' 
+type GalleryName = 'landscape' 

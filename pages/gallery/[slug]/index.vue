@@ -18,16 +18,17 @@
       <ul v-if="galleryItems.length" class="box-container gallery">
         <li v-for="(item, idx) in galleryItems" :key="item.id" class="box">
           <div class="inner">
-            <a
-              :href="item.href"
+            <NuxtLink
+              :to="`/gallery/${params}/${idx}`"
               class="glightbox2"
             >
               <nuxt-img
                 :src="item.src"
-                :alt="item.title"
+                :alt="item.description"
                 class="preview"
                 @load="() => { if(idx === galleries.length -1) loading = false }"
-              /></a>
+              />
+            </NuxtLink>
           </div>
         </li>
       </ul>
@@ -40,15 +41,15 @@
 import { GalleryDB, GalleryItemDB } from 'supabase/database.types'
 
 const route = useRoute()
-const params = route.params.slug as Params
+const params = route.params.slug as GalleryName
 
 const loading = ref(true)
 
-// onMounted(() => {
-//   setTimeout(() => {
-//     loading.value = false
-//   }, 500)
-// })
+onMounted(() => {
+  setTimeout(() => {
+    loading.value = false
+  }, 3000)
+})
 
 const client = useSupabaseClient<GalleryDB>()
 
@@ -74,11 +75,10 @@ const galleryItems = ref<GalleryItem[]>([])
 const { data: items, error: galleryError } = await clientGallery
   .from(params)
   .select('src, id, title, href, description')
-console.log(items)
 
 if (items?.length) {
   galleryItems.value = items
-} else if (error) {
+} else if (galleryError) {
   showError({ statusCode: 404, statusMessage: galleryError?.message })
 }
 

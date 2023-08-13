@@ -70,7 +70,7 @@ export interface GalleryItemDB {
         }
         Insert: { // the data to be passed to .insert()
           id?: never // generated columns must not be supplied
-          src: string; // `not null` columns with no default must be supplied          
+          src: string; // `not null` columns with no default must be supplied
           href: string
           title: string
           description?: string

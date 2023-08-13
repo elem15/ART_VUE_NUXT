@@ -31,7 +31,7 @@ import { Carousel, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 
 export default defineComponent({
-  name: 'Gallery',
+  name: 'CarouselModal',
   components: {
     Carousel,
     Slide
