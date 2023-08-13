@@ -2,7 +2,8 @@
 <!-- eslint-disable vue/html-closing-bracket-spacing -->
 <template>
   <main>
-    <div class="gallery-wrapper-styles" >
+    <SpinnerView v-if="pending || loading" />
+    <div v-else class="gallery-wrapper-styles" >
       <div class="picture-left">
         <div>
           <nuxt-img
@@ -30,7 +31,7 @@
         </div>
       </article>
     </div>
-    <FooterView :loading="loading" />
+    <FooterView :loading="pending" />
   </main>
 </template>
 
@@ -46,11 +47,12 @@ useSeoMeta({
 const client = useSupabaseClient<ArticlesDB>()
 
 const aboutInfo: Ref<Article[]> = ref([])
+
 const loading = ref(true)
 onMounted(() => {
   setTimeout(() => {
     loading.value = false
-  }, 1000)
+  }, 500)
 })
 const { data, pending, error } = await useAsyncData(
   'about',

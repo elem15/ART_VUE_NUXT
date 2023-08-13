@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <main>
-    <SpinnerView v-if="pending" />
+    <SpinnerView v-if="pending || loading" />
     <article v-else class="article" :class="pending && 'hidden'">
       <div v-for="(article, idx) in articles" :key="article.id" class="accordion">
         <input type="radio" name="select" class="accordion-select" :checked="idx === 0">
@@ -27,6 +27,14 @@ useSeoMeta({
 const client = useSupabaseClient<ArticlesDB>()
 
 const articles: Ref<Article[]> = ref([])
+
+const loading = ref(true)
+
+onMounted(() => {
+  setTimeout(() => {
+    loading.value = false
+  }, 500)
+})
 
 const { data, pending, error } = await useAsyncData(
   'articles',

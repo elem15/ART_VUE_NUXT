@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/html-self-closing -->
 <template>
-  <div>
+  <main>
     <SpinnerView v-if="loading" />
     <Swiper
       v-if="isPlay"
@@ -29,7 +29,7 @@
       </SwiperSlide>
     </Swiper>
     <FooterView :loading="loading" />
-  </div>
+  </main>
 </template>
 
 <script setup lang="ts">
