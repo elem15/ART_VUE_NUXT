@@ -2,7 +2,7 @@
 <!-- eslint-disable vue/html-closing-bracket-spacing -->
 <template>
   <main>
-    <div class="gallery-wrapper-styles" :class="loading && 'hidden'">
+    <div class="gallery-wrapper-styles" >
       <div class="picture-left">
         <div>
           <nuxt-img
@@ -30,7 +30,7 @@
         </div>
       </article>
     </div>
-    <FooterView />
+    <FooterView :loading="loading" />
   </main>
 </template>
 
@@ -47,7 +47,11 @@ const client = useSupabaseClient<ArticlesDB>()
 
 const aboutInfo: Ref<Article[]> = ref([])
 const loading = ref(true)
-
+onMounted(() => {
+  setTimeout(() => {
+    loading.value = false
+  }, 1000)
+})
 const { data, pending, error } = await useAsyncData(
   'about',
   async () => await client

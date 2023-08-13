@@ -1,5 +1,5 @@
 <template>
-  <footer class="section-footer sticky" :class="loading && 'hidden'">
+  <footer class="section-footer sticky" :class="loadFooter && 'hidden'">
     <div class="socials">
       <ul class="socials-wrapper">
         <li class="socials-wrapper__item">
@@ -83,11 +83,18 @@ import FacebookIcon from './svg-icons/facebook-icon.vue'
 import PinterestIcon from './svg-icons/pinterest-icon.vue'
 import InstagramIcon from './svg-icons/instagram-icon.vue'
 
-const loading = ref(true)
+const props = defineProps({
+  loading: Boolean
+})
+
+const pending = ref(true)
 
 onMounted(() => {
-  setTimeout(() => { loading.value = false }, 500)
+  setTimeout(() => { pending.value = false }, 500)
 })
+
+const loadFooter = computed(() => !(!props.loading || !pending))
+
 </script>
 
 <style scoped>

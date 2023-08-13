@@ -11,7 +11,7 @@
         <div class="accordion-content" v-html="article.content" />
       </div>
     </article>
-    <FooterView />
+    <FooterView :loading="pending" />
   </main>
 </template>
 

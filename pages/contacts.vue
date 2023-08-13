@@ -1,6 +1,7 @@
 <template>
-  <main class="about" :class="loading && 'hidden'">
-    <div>
+  <main class="about">
+    <SpinnerView v-if="loading" />
+    <div :class="loading && 'hidden'">
       <div class="picture-left">
         <div class="contacts">
           <h3>
@@ -11,11 +12,16 @@
           <h2>phone: <a href="tel:+7-981-775-37-48">+7-981-775-37-48</a></h2>
 
           <hr>
-          <nuxt-img loading="lazy" src="https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/artist/vadiy.jpg" alt="Vadiy" />
+          <nuxt-img
+            loading="lazy"
+            src="https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/artist/vadiy.jpg"
+            alt="Vadiy"
+            @load="loading = false"
+          />
         </div>
       </div>
       <hr>
-      <FooterView />
+      <FooterView :loading="loading" />
     </div>
   </main>
 </template>
@@ -30,7 +36,7 @@ useSeoMeta({
 
 const loading = ref(true)
 onMounted(() => {
-  setTimeout(() => { loading.value = false }, 300)
+  setTimeout(() => { loading.value = false }, 1000)
 })
 </script>
 

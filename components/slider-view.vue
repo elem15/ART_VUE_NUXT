@@ -3,12 +3,13 @@
   <div>
     <SpinnerView v-if="loading" />
     <Swiper
+      v-if="isPlay"
       :class="loading && 'hidden'"
       :modules="[SwiperAutoplay, SwiperEffectFade]"
       :slides-per-view="1"
       :loop="true"
       :effect="'fade'"
-      :speed="1000"
+      :speed="4000"
       :autoplay="{
         delay: 2000,
         disableOnInteraction: true,
@@ -27,6 +28,7 @@
         />
       </SwiperSlide>
     </Swiper>
+    <FooterView :loading="loading" />
   </div>
 </template>
 
@@ -35,6 +37,13 @@ import { MainDB } from '../supabase/database.types'
 const client = useSupabaseClient<MainDB>()
 const slides = ref<SliderPicture[]>([])
 const loading = ref(true)
+const isPlay = ref(false)
+
+onMounted(() => {
+  setTimeout(() => {
+    isPlay.value = true
+  }, 200)
+})
 
 const { data, error } = await client
   .from('main')

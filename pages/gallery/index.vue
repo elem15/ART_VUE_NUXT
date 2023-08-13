@@ -42,7 +42,7 @@
         </div>
       </div>
     </div>
-    <FooterView />
+    <FooterView :loading="loading" />
   </main>
 </template>
 
