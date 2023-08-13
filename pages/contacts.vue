@@ -1,7 +1,7 @@
 <template>
   <main class="about">
     <SpinnerView v-if="loading" />
-    <div :class="loading && 'hidden'">
+    <div v-else :class="loading && 'hidden'">
       <div class="picture-left">
         <div class="contacts">
           <h3>

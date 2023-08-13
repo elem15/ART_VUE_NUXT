@@ -3,7 +3,6 @@
   <main>
     <SpinnerView v-if="loading" />
     <Swiper
-      v-if="isPlay"
       :class="loading && 'hidden'"
       :modules="[SwiperAutoplay, SwiperEffectFade]"
       :slides-per-view="1"
@@ -37,12 +36,11 @@ import { MainDB } from '../supabase/database.types'
 const client = useSupabaseClient<MainDB>()
 const slides = ref<SliderPicture[]>([])
 const loading = ref(true)
-const isPlay = ref(false)
 
 onMounted(() => {
   setTimeout(() => {
-    isPlay.value = true
-  }, 200)
+    loading.value = false
+  }, 1000)
 })
 
 const { data, error } = await client

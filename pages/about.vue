@@ -3,7 +3,7 @@
 <template>
   <main>
     <SpinnerView v-if="pending || loading" />
-    <div v-else class="gallery-wrapper-styles" >
+    <div v-else :class="loading && 'hidden'" class="gallery-wrapper-styles" >
       <div class="picture-left">
         <div>
           <nuxt-img
@@ -31,7 +31,7 @@
         </div>
       </article>
     </div>
-    <FooterView :loading="pending" />
+    <FooterView :loading="loading" />
   </main>
 </template>
 
@@ -65,4 +65,5 @@ if (data?.value?.data?.length) {
 } else if (error) {
   showError({ statusCode: 404, statusMessage: 'Data is unavailable' })
 }
+
 </script>
