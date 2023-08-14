@@ -13,4 +13,14 @@ type Gallery = {
   src: string
   alt: string
   title: string
+  description?: string
 }
+type GalleryItem = {
+  id: string
+  src: string
+  href: string
+  title: string
+  description?: string
+}
+
+type GalleryName = 'landscape' 

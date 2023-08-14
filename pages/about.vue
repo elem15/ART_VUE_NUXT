@@ -2,14 +2,17 @@
 <!-- eslint-disable vue/html-closing-bracket-spacing -->
 <template>
   <main>
-    <div class="gallery-wrapper-styles">
+    <SpinnerView v-if="pending || loading" />
+    <div :style="{opacity: loading ? 0 : 1, filter: loading ? 'blur(1rem)' : 'none'}" class="gallery-wrapper-styles" >
       <div class="picture-left">
         <div>
           <nuxt-img
             loading="lazy"
             src="https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/artist/vadiy.jpg"
             alt="Vadiy"
-            @load="loading = false"
+            @load="() => {
+              onLoadEvent()
+            }"
           />
         </div>
         <div class="picture-description">
@@ -30,7 +33,7 @@
         </div>
       </article>
     </div>
-    <FooterView />
+    <FooterView :loading="loading" />
   </main>
 </template>
 
@@ -46,8 +49,17 @@ useSeoMeta({
 const client = useSupabaseClient<ArticlesDB>()
 
 const aboutInfo: Ref<Article[]> = ref([])
+
 const loading = ref(true)
 
+const onLoadEvent = () => {
+  setTimeout(() => { loading.value = false }, 500)
+}
+onMounted(() => {
+  setTimeout(() => {
+    loading.value = false
+  }, 500)
+})
 const { data, pending, error } = await useAsyncData(
   'about',
   async () => await client
@@ -59,4 +71,5 @@ if (data?.value?.data?.length) {
 } else if (error) {
   showError({ statusCode: 404, statusMessage: 'Data is unavailable' })
 }
+
 </script>

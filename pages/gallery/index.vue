@@ -3,9 +3,9 @@
     <div v-if="loading" class="fog">
       <SpinnerView />
     </div>
-    <div v-if="galleries.length" class="gallery-wrapper-styles" :style="{visibility: `${loading ? 'hidden' : 'visible'}`}">
+    <div v-if="galleries.length" class="gallery-wrapper-styles" :class="loading && 'hidden'">
       <ul class="box-container three-cols gallery gallery-styles">
-        <li v-for="gallery in galleries" :key="gallery.id" class="box">
+        <li v-for="(gallery, idx) in galleries" :key="gallery.id" class="box">
           <div class="inner">
             <NuxtLink :to="`/gallery/${gallery.title}`" class="glightbox">
               <nuxt-img
@@ -16,7 +16,7 @@
                 loading="lazy"
                 preload
                 class="art-styles"
-                @load="loading = false"
+                @load="() => { if(idx === galleries.length -1) onLoadEvent() }"
               />
               <h4 class="picture-styles">
                 {{ gallery.alt }}
@@ -42,7 +42,7 @@
         </div>
       </div>
     </div>
-    <FooterView />
+    <FooterView :loading="loading" />
   </main>
 </template>
 
@@ -52,6 +52,16 @@ import { GalleryDB } from '../../supabase/database.types'
 const client = useSupabaseClient<GalleryDB>()
 const galleries = ref<Gallery[]>([])
 const loading = ref(true)
+
+const onLoadEvent = () => {
+  setTimeout(() => { loading.value = false }, 500)
+}
+
+onMounted(() => {
+  setTimeout(() => {
+    loading.value = false
+  }, 3000)
+})
 
 const { data, error } = await client
   .from('galleries')
@@ -64,8 +74,9 @@ if (data?.length) {
 }
 </script>
 
-<style>
+<style scoped>
 .fog {
   z-index: 10;
 }
+
 </style>

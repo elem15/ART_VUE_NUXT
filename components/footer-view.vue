@@ -1,5 +1,5 @@
 <template>
-  <footer class="section-footer sticky" :class="hidden && 'hidden'">
+  <footer class="section-footer sticky" :class="loadFooter && 'hidden'">
     <div class="socials">
       <ul class="socials-wrapper">
         <li class="socials-wrapper__item">
@@ -74,6 +74,15 @@
     <div class="copyright">
       Copyright © 2023 by Vlad Berezin
     </div>
+    <div class="copyright">
+      Website created by  <a href="https://github.com/elem15" target="_blank">
+        Mikhail Dvorkin<nuxt-img
+          src="/img/github.svg"
+          alt="elem15 github"
+          :height="15"
+        /></a><br>
+      <a href="https://artwalter.netlify.app/" target="_blank">Old site version</a>
+    </div>
   </footer>
 </template>
 
@@ -83,19 +92,22 @@ import FacebookIcon from './svg-icons/facebook-icon.vue'
 import PinterestIcon from './svg-icons/pinterest-icon.vue'
 import InstagramIcon from './svg-icons/instagram-icon.vue'
 
-const hidden = ref(true)
+const props = defineProps({
+  loading: Boolean
+})
+
+const pending = ref(true)
 
 onMounted(() => {
-  setTimeout(() => { hidden.value = false }, 500)
+  setTimeout(() => { pending.value = false }, 500)
 })
+
+const loadFooter = computed(() => !(!props.loading || !pending))
+
 </script>
 
 <style scoped>
 footer {
   transition: all 0.7s;
-}
-footer.hidden {
-  opacity: 0;
-  filter: blur(1rem);
 }
 </style>

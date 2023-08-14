@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout>
-    <NuxtLoadingIndicator />
     <BackgroundView />
+    <NuxtLoadingIndicator />
     <HeaderView />
     <NuxtPage />
   </NuxtLayout>
@@ -15,8 +15,8 @@ useSeoMeta({
   ogDescription: 'Oil painting / Картины маслом / Академия Художеств'
 })
 </script>
-<style>
 
+<style>
 .page-enter-active,
 .page-leave-active {
   transition: all 0.7s;

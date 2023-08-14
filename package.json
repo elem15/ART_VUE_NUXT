@@ -21,6 +21,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.32.0",
     "nuxt-swiper": "^1.2.0",
+    "vue3-carousel-nuxt": "^1.1.0",
     "yandex-metrika-module-nuxt3": "^1.5.3"
   }
 }
