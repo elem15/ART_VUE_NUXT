@@ -4,14 +4,14 @@
     <div class="gallery-wrapper" :style="{opacity: loading ? 0 : 1, filter: loading ? 'blur(1rem)' : 'none'}">
       <div class="picture">
         <div class="gallery-wrapper-picture">
-          <nuxt-img src="https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/landscape/small/spring-alley.jpg" alt="Дорога в лесу" :quality="50" />
+          <nuxt-img :src="collection?.src" alt="Дорога в лесу" :quality="50" />
         </div>
         <div class="picture-description">
           <h2 class="picture-description-header">
-            ПЕЙЗАЖИ
+            {{ collection?.alt }}
           </h2>
           <p class="picture-description-article">
-            {{ collectionDescription }}
+            {{ collection?.description }}
           </p>
         </div>
       </div>
@@ -56,8 +56,7 @@ onMounted(() => {
 
 const client = useSupabaseClient<GalleryDB>()
 
-const galleries: Ref<Gallery[]> = ref([])
-const collectionDescription = ref('')
+const collection = ref<Gallery>()
 const { data, pending, error } = await useAsyncData(
   'galleries',
   async () => await client
@@ -66,8 +65,7 @@ const { data, pending, error } = await useAsyncData(
     .eq('title', params)
 )
 if (data?.value?.data?.length) {
-  galleries.value = data.value?.data
-  collectionDescription.value = galleries.value[0].description as string
+  collection.value = data.value?.data[0]
 } else if (error) {
   showError({ statusCode: 404, statusMessage: 'Data is unavailable' })
 }
