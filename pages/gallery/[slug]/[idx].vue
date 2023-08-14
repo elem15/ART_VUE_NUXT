@@ -102,4 +102,10 @@ if (data?.length) {
   margin: 0 auto;
   max-width: 60%;
 }
+@media screen and (max-width: 480px) {
+  .carousel__item__text-large {
+  margin: 0 auto;
+  max-width: 90%;
+}
+}
 </style>
