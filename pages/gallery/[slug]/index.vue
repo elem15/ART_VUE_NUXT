@@ -26,7 +26,7 @@
                 :src="item.src"
                 :alt="item.description"
                 class="preview"
-                @load="() => { if(idx === galleries.length -1) loading = false }"
+                @load="() => { if(idx === galleries.length -1) onLoadEvent() }"
               />
             </NuxtLink>
           </div>
@@ -45,6 +45,9 @@ const params = route.params.slug as GalleryName
 
 const loading = ref(true)
 
+const onLoadEvent = () => {
+  setTimeout(() => { loading.value = false }, 500)
+}
 onMounted(() => {
   setTimeout(() => {
     loading.value = false

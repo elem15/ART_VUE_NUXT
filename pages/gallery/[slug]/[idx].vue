@@ -4,16 +4,20 @@
     <div :style="{opacity: loading ? 0 : 1, filter: loading ? 'blur(1rem)' : 'none', transition: 'all 0.7s'}">
       <Carousel id="gallery" v-model="currentSlide" :items-to-show="1" :wrap-around="true">
         <Slide v-for="(slide, index) in data" :key="slide.id">
-          <div class="carousel__item">
+          <figure class="carousel__item__large">
             <nuxt-img
               :src="slide.href"
-              class="carousel__item-large"
+              class="carousel__item__img-large"
+              :alt="slide.title"
               @load="() => {
                 if(data && index === data.length - 1)
                   onLoadEvent()
               }"
             />
-          </div>
+            <figcaption class="carousel__item__text-large">
+              {{ slide.description }}
+            </figcaption>
+          </figure>
         </Slide>
       </Carousel>
 
@@ -26,7 +30,7 @@
       >
         <Slide v-for="slide in data" :key="slide.id">
           <div class="carousel__item" @click="slideTo(currentSlide - 1)">
-            <nuxt-img :src="slide.src" class="carousel__item-small" />
+            <nuxt-img :src="slide.src" class="carousel__item__img-small" :alt="slide.title" />
           </div>
         </Slide>
       </Carousel>
@@ -57,6 +61,7 @@ const loading = ref(true)
 const onLoadEvent = () => {
   setTimeout(() => { loading.value = false }, 500)
 }
+
 onMounted(() => {
   setTimeout(() => {
     loading.value = false
@@ -75,20 +80,26 @@ if (data?.length) {
 </script>
 
 <style scoped>
-.carousel__item-large {
+  .carousel__item__large {
+    /* background-color: aliceblue; */
+    width: fit-content;
+    padding-bottom: 2rem;
+  }
+.carousel__item__img-large {
   height: 70vh;
 }
-.carousel__item-small {
+.carousel__item__img-small {
   max-width: 12vw;
   max-height: 100px;
 }
 @media screen and (max-width: 1024px) {
-  .carousel__item-large {
+  .carousel__item__img-large {
     width: 95vw;
     height: auto;
   }
-  .carousel__slide {
-
-  }
+}
+.carousel__item__text-large {
+  margin: 0 auto;
+  max-width: 60%;
 }
 </style>

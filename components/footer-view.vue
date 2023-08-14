@@ -74,6 +74,15 @@
     <div class="copyright">
       Copyright © 2023 by Vlad Berezin
     </div>
+    <div class="copyright">
+      Website created by  <a href="https://github.com/elem15" target="_blank">
+        Mikhail Dvorkin<nuxt-img
+          src="/img/github.svg"
+          alt="elem15 github"
+          :height="15"
+        /></a><br>
+      <a href="https://artwalter.netlify.app/" target="_blank">Old site version</a>
+    </div>
   </footer>
 </template>
 

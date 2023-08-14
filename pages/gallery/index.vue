@@ -16,7 +16,7 @@
                 loading="lazy"
                 preload
                 class="art-styles"
-                @load="() => { if(idx === galleries.length -1) loading = false }"
+                @load="() => { if(idx === galleries.length -1) onLoadEvent() }"
               />
               <h4 class="picture-styles">
                 {{ gallery.alt }}
@@ -52,6 +52,16 @@ import { GalleryDB } from '../../supabase/database.types'
 const client = useSupabaseClient<GalleryDB>()
 const galleries = ref<Gallery[]>([])
 const loading = ref(true)
+
+const onLoadEvent = () => {
+  setTimeout(() => { loading.value = false }, 500)
+}
+
+onMounted(() => {
+  setTimeout(() => {
+    loading.value = false
+  }, 3000)
+})
 
 const { data, error } = await client
   .from('galleries')
