@@ -2,13 +2,22 @@
   <main>
     <SpinnerView v-if="loading" />
     <div :style="{opacity: loading ? 0 : 1, filter: loading ? 'blur(1rem)' : 'none', transition: 'all 0.7s'}">
-      <Carousel id="gallery" v-model="currentSlide" :items-to-show="1" :wrap-around="true">
+      <Carousel
+        id="gallery"
+        v-model="currentSlide"
+        :items-to-show="1"
+        :wrap-around="true"
+        :autoplay="5000"
+        :transition="1000"
+        :pause-autoplay-on-hover="true"
+      >
         <Slide v-for="(slide, index) in data" :key="slide.id">
           <figure class="carousel__item__large">
             <nuxt-img
               :src="slide.href"
               class="carousel__item__img-large"
               :alt="slide.title"
+              :quality="70"
               @load="() => {
                 if(data && index === data.length - 1)
                   onLoadEvent()
@@ -81,7 +90,6 @@ if (data?.length) {
 
 <style scoped>
   .carousel__item__large {
-    /* background-color: aliceblue; */
     width: fit-content;
     padding-bottom: 2rem;
   }
