@@ -22,7 +22,7 @@
         <nuxt-img
           :src="slide.src"
           :alt="slide.alt"
-          quality="90"
+          quality="70"
           @load="() => { if(idx === slides.length - 1) loading = false }"
         />
       </SwiperSlide>
