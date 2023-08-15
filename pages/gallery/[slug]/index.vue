@@ -26,7 +26,7 @@
                 :src="item.src"
                 :alt="item.description"
                 class="preview"
-                @load="() => { if(idx === galleries.length -1) onLoadEvent() }"
+                @load="() => { if(idx === galleryItems.length -1) onLoadEvent() }"
               />
             </NuxtLink>
           </div>
@@ -76,7 +76,6 @@ const galleryItems = ref<GalleryItem[]>([])
 const { data: items, error: galleryError } = await clientGallery
   .from(params)
   .select('src, id, title, href, description')
-
 if (items?.length) {
   galleryItems.value = items
 } else if (galleryError) {
