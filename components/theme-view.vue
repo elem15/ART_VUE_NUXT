@@ -100,6 +100,12 @@ const colorMode = useColorMode()
   & .accordion-content {
     background-color: #091a28;
     color: aliceblue;
+    & p {
+      color: aliceblue;
+    }
+    & li {
+      color: aliceblue;
+    }
   }
   & .picture-description-header {
     color: aqua;
