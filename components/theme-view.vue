@@ -7,8 +7,8 @@
         aria-hidden="true"
         role="img"
         class="icon"
-        width="1em"
-        height="1em"
+        width="1.5rem"
+        height="1.5rem"
         viewBox="0 0 24 24"
         data-v-389e99a3=""
         data-v-97ee44f7=""
@@ -21,8 +21,8 @@
         aria-hidden="true"
         role="img"
         class="icon"
-        width="1em"
-        height="1em"
+        width="1.5rem"
+        height="1.5rem"
         viewBox="0 0 24 24"
         data-v-389e99a3=""
         data-v-97ee44f7=""
@@ -48,6 +48,14 @@ const colorMode = useColorMode()
     cursor: pointer;
   }
 }
+@media screen and (max-width: 480px) {
+  .theme-toggle {
+  position: fixed;
+  top: 0.3rem;
+  right: 0.2rem;
+}
+}
+
 .light-mode body {
   background-color: aquamarine;
   color: black;
