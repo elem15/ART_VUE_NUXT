@@ -64,7 +64,7 @@ const colorMode = useColorMode()
 }
 
 .light-mode body {
-  background-color: aquamarine;
+  background-color: rgb(205, 205, 205);
   color: black;
 }
 .dark-mode {
