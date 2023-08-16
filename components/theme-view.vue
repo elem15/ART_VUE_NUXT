@@ -49,11 +49,11 @@ const colorMode = useColorMode()
   }
 }
 @media screen and (max-width: 480px) {
-  .theme-toggle {
-  position: fixed;
-  top: 0.3rem;
-  right: 0.2rem;
-}
+    .theme-toggle {
+    position: absolute;
+    top: -1.2rem;
+    right: 0rem;
+  }
 }
 
 .light-mode body {
