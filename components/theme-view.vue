@@ -41,18 +41,24 @@ const colorMode = useColorMode()
   top: 1rem;
   right: 1rem;
   z-index: 1000;
+  width: fit-content;
   & button {
     outline: none;
     background-color: rgba(255, 255, 255, 0);
     border: none;
     cursor: pointer;
+    padding-top: 5px;
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 1280px) {
     .theme-toggle {
-    position: absolute;
-    top: -1.2rem;
-    right: 0rem;
+    position: static;
+    width: 100%;
+    text-align: right;
+    height: 0px;
+    & button {
+      margin-top: 5px;
+    }
   }
 }
 
