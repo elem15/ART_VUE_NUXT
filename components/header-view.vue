@@ -38,6 +38,7 @@
         </ul>
       </nav>
     </div>
+    <ThemeView />
   </header>
 </template>
 

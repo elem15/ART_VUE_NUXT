@@ -243,6 +243,7 @@ main {
 .picture-description-header {
   font-size: 2em;
   margin: 0;
+  color: black;
 }
 
 .picture-description-article {

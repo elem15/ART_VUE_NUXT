@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div v-if="colorMode.preference === 'light'" class="container">
     <nuxt-img
       v-for="item in [1,2,3,4,5]"
       :key="item"
@@ -10,3 +10,14 @@
     />
   </div>
 </template>
+
+<script setup>
+const colorMode = useColorMode()
+
+</script>
+
+<style scoped>
+.dark-mode .container {
+  display: none;
+}
+</style>
