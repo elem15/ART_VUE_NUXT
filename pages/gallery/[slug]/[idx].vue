@@ -56,7 +56,14 @@ import 'vue3-carousel/dist/carousel.css'
 
 const route = useRoute()
 
-const { slug, idx } = route.params as {slug: GalleryName, idx: string}
+const { slug, idx } = route.params as { slug: GalleryName, idx: string; }
+
+useSeoMeta({
+  title: 'Artist / Художник / ' + slug.toUpperCase(),
+  ogTitle: 'Artist / Художник / ' + slug.toUpperCase(),
+  description: 'Oil painting / Картины маслом / Академия Художеств / ' + slug.toUpperCase(),
+  ogDescription: 'Oil painting / Картины маслом / Академия Художеств / ' + slug.toUpperCase()
+})
 const clientGallery = useSupabaseClient<GalleryItemDB>()
 const galleryItems = ref<GalleryItem[]>([])
 
