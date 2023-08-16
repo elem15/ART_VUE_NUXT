@@ -64,6 +64,10 @@ const colorMode = useColorMode()
 }
 
 .light-mode body {
+    background-color: #7fffd4;
+    color: #000;
+}
+.light-mode body {
   background-color: rgb(205, 205, 205);
   color: black;
 }
@@ -95,9 +99,7 @@ const colorMode = useColorMode()
   }
   & .accordion-content {
     background-color: #091a28;
-    & p {
-      color: aliceblue;
-    }
+    color: aliceblue;
   }
   & .picture-description-header {
     color: aqua;
