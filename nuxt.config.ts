@@ -19,8 +19,19 @@ export default defineNuxtConfig({
     '@nuxt/devtools',
     'nuxt-swiper',
     '@nuxtjs/supabase',
-    'yandex-metrika-module-nuxt3'
+    'yandex-metrika-module-nuxt3',
+    '@nuxtjs/color-mode'
   ],
+  colorMode: {
+    preference: 'system', // default value of $colorMode.preference
+    fallback: 'light', // fallback value if not system preference found
+    hid: 'nuxt-color-mode-script',
+    globalName: '__NUXT_COLOR_MODE__',
+    componentName: 'ColorScheme',
+    classPrefix: '',
+    classSuffix: '-mode',
+    storageKey: 'nuxt-color-mode'
+  },
   yandexMetrika: {
     id: '61602646',
     clickmap: true,

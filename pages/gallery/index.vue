@@ -49,6 +49,13 @@
 <script setup lang="ts">
 import { GalleryDB } from '../../supabase/database.types'
 
+useSeoMeta({
+  title: 'Artist / Художник / Галерея',
+  ogTitle: 'Artist / Художник / Галерея',
+  description: 'Oil painting / Картины маслом / Академия Художеств / Галерея',
+  ogDescription: 'Oil painting / Картины маслом / Академия Художеств / Галерея'
+})
+
 const client = useSupabaseClient<GalleryDB>()
 const galleries = ref<Gallery[]>([])
 const loading = ref(true)

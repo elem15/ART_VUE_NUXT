@@ -45,6 +45,13 @@ const params = route.params.slug as GalleryName
 
 const loading = ref(true)
 
+useSeoMeta({
+  title: 'Artist / Художник / ' + params.toUpperCase(),
+  ogTitle: 'Artist / Художник / ' + params.toUpperCase(),
+  description: 'Oil painting / Картины маслом / Академия Художеств / ' + params.toUpperCase(),
+  ogDescription: 'Oil painting / Картины маслом / Академия Художеств / ' + params.toUpperCase()
+})
+
 const onLoadEvent = () => {
   setTimeout(() => { loading.value = false }, 500)
 }
