@@ -55,7 +55,7 @@ const colorMode = useColorMode()
     position: static;
     width: 100%;
     text-align: right;
-    height: 0px;
+    height: 1rem;
     & button {
       margin-top: 5px;
       margin-right: 5px;
