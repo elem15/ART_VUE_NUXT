@@ -45,7 +45,10 @@
         v-model="currentSlide"
         :items-to-show="7"
         :wrap-around="true"
-        class="carousel__viewport__small"
+        :style="{cursor: draggable ? 'grabbing' : 'grab'}"
+        @click="draggable = true"
+        @mousedown="draggable = true"
+        @mouseup="draggable = false"
       >
         <Slide v-for="slide in data" :key="slide.id">
           <div class="carousel__item" @click="slideTo(currentSlide - 1)">
@@ -118,10 +121,6 @@ const draggable = ref(false)
 }
 .carousel {
   cursor: url("/img/pause-button.png"), auto;
-}
-
-.carousel__viewport__small {
-  cursor: grab;
 }
 
 .carousel__item__large {
