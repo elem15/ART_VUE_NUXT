@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="modal">
     <SpinnerView v-if="loading" />
     <div :style="{opacity: loading ? 0 : 1, filter: loading ? 'blur(1rem)' : 'none', transition: 'all 0.7s'}">
       <Carousel
@@ -9,7 +9,6 @@
         :wrap-around="true"
         :autoplay="5000"
         :transition="1000"
-        :pause-autoplay-on-hover="true"
       >
         <Slide v-for="(slide, index) in data" :key="slide.id">
           <figure class="carousel__item__large">
@@ -43,7 +42,6 @@
           </div>
         </Slide>
       </Carousel>
-      <FooterView :loading="loading" />
     </div>
   </main>
 </template>
@@ -95,7 +93,15 @@ if (data?.length) {
 
 </script>
 
-<style scoped>
+<style>
+.modal {
+  background-color: #cecece;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
   .carousel__item__large {
     width: fit-content;
     padding-bottom: 2rem;

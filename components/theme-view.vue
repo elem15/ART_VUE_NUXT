@@ -64,15 +64,16 @@ const colorMode = useColorMode()
 }
 
 .light-mode body {
-    background-color: #7fffd4;
+    background-color: #cecece;
     color: #000;
 }
-.light-mode body {
-  background-color: rgb(205, 205, 205);
-  color: black;
-}
+
 .dark-mode {
   & body {
+    background-color: #091a28;
+    color: #abffe3;
+  }
+  & main.modal {
     background-color: #091a28;
     color: #abffe3;
   }
