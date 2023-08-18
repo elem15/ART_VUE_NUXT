@@ -15,7 +15,10 @@
         :autoplay="5000"
         :transition="1000"
         :pause-autoplay-on-hover="true"
-        class="carousel__viewport__large"
+        :style="{cursor: draggable ? 'grab' : ''}"
+        @click="draggable = true"
+        @mousedown="draggable = true"
+        @mouseup="draggable = false"
       >
         <Slide v-for="(slide, index) in data" :key="slide.id">
           <figure class="carousel__item__large">
@@ -100,6 +103,8 @@ if (data?.length) {
   showError({ statusCode: 404, statusMessage: error?.message })
 }
 
+const draggable = ref(false)
+
 </script>
 
 <style>
@@ -111,12 +116,14 @@ if (data?.length) {
   top: 0;
   left: 0;
 }
-.carousel__viewport__large {
+.carousel {
   cursor: url("/img/pause-button.png"), auto;
 }
+
 .carousel__viewport__small {
-  cursor: pointer;
+  cursor: grab;
 }
+
 .carousel__item__large {
   width: fit-content;
   padding-bottom: 2rem;
