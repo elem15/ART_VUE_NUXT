@@ -2,15 +2,11 @@
   <div class="container" />
 </template>
 
-<script setup>
-// const colorMode = useColorMode()
-</script>
-
 <style scoped>
 .dark-mode .container {
-  display: none;
+  background-image: url('/img/background-dark.jpg');
 }
 .container {
-  background-image: url('https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/assets/background.jpg')
+  background-image: url('/img/background.jpg');
 }
 </style>
