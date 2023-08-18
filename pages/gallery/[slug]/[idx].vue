@@ -3,7 +3,7 @@
     <SpinnerView v-if="loading" />
     <div :style="{opacity: loading ? 0 : 1, filter: loading ? 'blur(1rem)' : 'none', transition: 'all 0.7s'}">
       <div>
-        <button class="back" @click="router.back()">
+        <button class="back" @click="router.push('/gallery/' + slug)">
           ↩
         </button>
       </div>
@@ -84,6 +84,11 @@ const currentSlide = ref(+idx)
 const slideTo = (val: number) => {
   currentSlide.value = val
 }
+
+// update url, but refresh page
+// watch(currentSlide, (currentSlide, _) => {
+//   router.replace(`/gallery/${slug}/${String(currentSlide)}`)
+// })
 
 const loading = ref(true)
 
