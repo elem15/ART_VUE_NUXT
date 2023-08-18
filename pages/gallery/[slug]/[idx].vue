@@ -2,6 +2,11 @@
   <main class="modal">
     <SpinnerView v-if="loading" />
     <div :style="{opacity: loading ? 0 : 1, filter: loading ? 'blur(1rem)' : 'none', transition: 'all 0.7s'}">
+      <div>
+        <button class="back" @click="router.back()">
+          ↩
+        </button>
+      </div>
       <Carousel
         id="gallery"
         v-model="currentSlide"
@@ -9,6 +14,8 @@
         :wrap-around="true"
         :autoplay="5000"
         :transition="1000"
+        :pause-autoplay-on-hover="true"
+        class="carousel__viewport__large"
       >
         <Slide v-for="(slide, index) in data" :key="slide.id">
           <figure class="carousel__item__large">
@@ -35,6 +42,7 @@
         v-model="currentSlide"
         :items-to-show="7"
         :wrap-around="true"
+        class="carousel__viewport__small"
       >
         <Slide v-for="slide in data" :key="slide.id">
           <div class="carousel__item" @click="slideTo(currentSlide - 1)">
@@ -52,6 +60,7 @@ import { GalleryItemDB } from '~/supabase/database.types'
 
 import 'vue3-carousel/dist/carousel.css'
 
+const router = useRouter()
 const route = useRoute()
 
 const { slug, idx } = route.params as { slug: GalleryName, idx: string; }
@@ -102,10 +111,16 @@ if (data?.length) {
   top: 0;
   left: 0;
 }
-  .carousel__item__large {
-    width: fit-content;
-    padding-bottom: 2rem;
-  }
+.carousel__viewport__large {
+  cursor: url("/img/pause-button.png"), auto;
+}
+.carousel__viewport__small {
+  cursor: pointer;
+}
+.carousel__item__large {
+  width: fit-content;
+  padding-bottom: 2rem;
+}
 .carousel__item__img-large {
   height: 70vh;
 }
@@ -124,9 +139,20 @@ if (data?.length) {
   max-width: 60%;
 }
 @media screen and (max-width: 480px) {
-  .carousel__item__text-large {
-  margin: 0 auto;
-  max-width: 90%;
+    .carousel__item__text-large {
+    margin: 0 auto;
+    max-width: 90%;
+  }
 }
+
+.back {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  outline: none;
+  font-size: 2.3rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
+
 </style>
