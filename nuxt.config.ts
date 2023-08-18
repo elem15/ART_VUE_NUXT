@@ -1,5 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      meta: [{ name: 'darkreader-lock' }]
+    }
+  },
   devtools: { enabled: true, vscode: {} },
   modules: [
     '@nuxtjs/eslint-module',
