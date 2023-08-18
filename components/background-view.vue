@@ -1,23 +1,12 @@
 <template>
-  <div v-if="colorMode.preference === 'light'" class="container">
-    <nuxt-img
-      v-for="item in [1,2,3,4,5]"
-      :key="item"
-      src="https://umlxyrmekufynqaatflf.supabase.co/storage/v1/object/public/assets/background.jpg"
-      alt="background"
-      lazy="false"
-      quality="50"
-    />
-  </div>
+  <div class="container" />
 </template>
-
-<script setup>
-const colorMode = useColorMode()
-
-</script>
 
 <style scoped>
 .dark-mode .container {
-  display: none;
+  background-image: url('/img/background-dark.jpg');
+}
+.container {
+  background-image: url('/img/background.jpg');
 }
 </style>
