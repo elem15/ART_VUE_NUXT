@@ -1,6 +1,5 @@
 <template>
   <header class="section-header">
-    <ThemeView />
     <h1 class="section-header-head">
       Artist Vladiy Zart
     </h1>

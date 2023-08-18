@@ -12,7 +12,7 @@
         viewBox="0 0 24 24"
         data-v-389e99a3=""
         data-v-97ee44f7=""
-      ><path fill="currentColor" d="M21.64 13a1 1 0 0 0-1.05-.14a8.05 8.05 0 0 1-3.37.73a8.15 8.15 0 0 1-8.14-8.1a8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69a1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14a9.79 9.79 0 0 0 2.1-.22a8.11 8.11 0 0 1-7.18 4.32Z" /></svg>
+      ><path fill="#fff" d="M21.64 13a1 1 0 0 0-1.05-.14a8.05 8.05 0 0 1-3.37.73a8.15 8.15 0 0 1-8.14-8.1a8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69a1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14a9.79 9.79 0 0 0 2.1-.22a8.11 8.11 0 0 1-7.18 4.32Z" /></svg>
     </button>
     <button v-else @click="colorMode.preference = 'dark'">
       <svg
@@ -37,7 +37,7 @@ const colorMode = useColorMode()
 
 <style>
 .theme-toggle {
-  position: fixed;
+  position: absolute;
   top: 1rem;
   right: 1rem;
   z-index: 1000;
@@ -52,29 +52,24 @@ const colorMode = useColorMode()
 }
 @media screen and (max-width: 1280px) {
     .theme-toggle {
-    position: static;
-    width: 100%;
-    text-align: right;
-    height: 1rem;
-    & button {
-      margin-top: 5px;
-      margin-right: 5px;
-    }
+      top: 0;
+      right: 0;
   }
 }
 
 .light-mode body {
-    background-color: #7fffd4;
+    background-color: #cecece;
     color: #000;
 }
-.light-mode body {
-  background-color: rgb(205, 205, 205);
-  color: black;
-}
+
 .dark-mode {
   & body {
     background-color: #091a28;
     color: #abffe3;
+  }
+  & main.modal {
+    background-color: #091a28;
+    color: rgb(134 255 242);
   }
   & header * {
     color: rgb(134 255 242);
@@ -109,6 +104,9 @@ const colorMode = useColorMode()
   }
   & .picture-description-header {
     color: aqua;
+  }
+  & .back {
+    color: rgb(134 255 242);;
   }
 }
 </style>

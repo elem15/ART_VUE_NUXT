@@ -20,7 +20,7 @@
           <div class="inner">
             <NuxtLink
               :to="`/gallery/${params}/${idx}`"
-              class="glightbox2"
+              class="link-to-slider"
             >
               <nuxt-img
                 :src="item.src"
@@ -90,3 +90,9 @@ if (items?.length) {
 }
 
 </script>
+
+<style>
+.link-to-slider {
+  cursor: zoom-in;
+}
+</style>
