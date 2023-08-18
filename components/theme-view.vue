@@ -61,9 +61,17 @@ const colorMode = useColorMode()
     background-color: #cecece;
     color: #000;
 }
+.light-mode :root {
+    background-color: #cecece;
+    color: #000;
+}
 
 .dark-mode {
   & body {
+    background-color: #091a28;
+    color: #abffe3;
+  }
+  & :root {
     background-color: #091a28;
     color: #abffe3;
   }
