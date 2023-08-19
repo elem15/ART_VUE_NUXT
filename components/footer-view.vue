@@ -77,6 +77,7 @@
     <div class="copyright">
       Website created by  <a href="https://github.com/elem15" target="_blank">
         Mikhail Dvorkin<nuxt-img
+          class="github"
           src="/img/github.svg"
           alt="elem15 github"
           :height="15"
@@ -109,5 +110,12 @@ const loadFooter = computed(() => !(!props.loading || !pending))
 <style scoped>
 footer {
   transition: all 0.7s;
+}
+.dark-mode {
+  & .github {
+    background-color: rgb(181, 255, 255);
+    border-radius: 50%;
+  }
+
 }
 </style>
