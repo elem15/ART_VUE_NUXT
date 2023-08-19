@@ -11,7 +11,7 @@
               Главная
             </NuxtLink>
           </li>
-          <li class="nav-wrapper__item">
+          <li class="nav-wrapper__item" @mouseover="isGalleryMenu=true" @mouseleave="isGalleryMenu=false">
             <NuxtLink to="/gallery" class="nav-wrapper__item-link nav-wrapper__item-link--active">
               Галерея
             </NuxtLink>
@@ -37,12 +37,47 @@
           </li>
         </ul>
       </nav>
+      <div :class="!isGalleryMenu && 'hidden'" class="gallery-menu nav-wrapper" @mouseover="isGalleryMenu=true" @mouseleave="isGalleryMenu=false">
+        <NuxtLink to="/gallery/painting" class="nav-wrapper__item-link nav-wrapper__item-link--active">
+          Живопись
+        </NuxtLink>
+        <NuxtLink to="/gallery/still-life" class="nav-wrapper__item-link nav-wrapper__item-link--active">
+          Натюрморт
+        </NuxtLink>
+        <NuxtLink to="/gallery/sketches" class="nav-wrapper__item-link nav-wrapper__item-link--active">
+          Скетчи
+        </NuxtLink>
+        <NuxtLink to="/gallery/graphic" class="nav-wrapper__item-link nav-wrapper__item-link--active">
+          Графика
+        </NuxtLink>
+        <NuxtLink to="/gallery/portrait" class="nav-wrapper__item-link nav-wrapper__item-link--active">
+          Портреты
+        </NuxtLink>
+        <NuxtLink to="/gallery/landscape" class="nav-wrapper__item-link nav-wrapper__item-link--active">
+          Пейзажи
+        </NuxtLink>
+      </div>
     </div>
   </header>
 </template>
 
+<script setup lang="ts">
+
+const isGalleryMenu = ref(false)
+
+</script>
+
 <style>
 .router-link-active.router-link-exact-active {
   color: blueviolet;
+}
+.gallery-menu {
+  display: none;
+}
+@media screen and (min-width: 576px) {
+  .gallery-menu {
+    transition: all 0.7s;
+    display: flex;
+  }
 }
 </style>

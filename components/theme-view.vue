@@ -116,5 +116,9 @@ const colorMode = useColorMode()
   & .back {
     color: rgb(134 255 242);;
   }
+  & .github {
+    background-color: rgb(143, 143, 143);
+    border-radius: 50%;
+  }
 }
 </style>
