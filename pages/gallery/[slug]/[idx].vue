@@ -51,7 +51,7 @@
         @mouseup="draggable = false"
       >
         <Slide v-for="slide in data" :key="slide.id">
-          <div class="carousel__item" @click="slideTo(currentSlide - 1)">
+          <div class="carousel__small" @click="slideTo(currentSlide - 1)">
             <nuxt-img :src="slide.src" class="carousel__item__img-small" :alt="slide.title" />
           </div>
         </Slide>
@@ -121,28 +121,36 @@ const draggable = ref(false)
   z-index: 100;
   position: absolute;
   width: 100%;
-  height: 100vh;
+  height: fit-content;
   top: 0;
   left: 0;
+}
+@media screen and (max-width: 576px) {
+  .modal {
+    height: fit-content;
+    padding-bottom: 0;
+  }
 }
 .carousel {
   cursor: url("/img/pause-button.png"), auto;
 }
-
+.carousel__small {
+  margin-bottom: 2rem;
+}
 .carousel__item__large {
-  width: fit-content;
   padding-bottom: 2rem;
+  width: 100vw;
 }
 .carousel__item__img-large {
-  height: 70vh;
+  height: 65vh;
 }
 .carousel__item__img-small {
   max-width: 12vw;
   max-height: 100px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 576px) {
   .carousel__item__img-large {
-    width: 95vw;
+    max-width: 95vw;
     height: auto;
   }
 }

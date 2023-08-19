@@ -81,9 +81,14 @@ if (data?.length) {
 }
 </script>
 
-<style scoped>
+<style>
 .fog {
   z-index: 10;
+}
+
+.gallery img {
+  box-shadow: -10px 10px 20px -5px rgb(93, 65, 65);
+  border-radius: 5px;
 }
 
 </style>
