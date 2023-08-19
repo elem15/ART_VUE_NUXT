@@ -51,7 +51,7 @@
         @mouseup="draggable = false"
       >
         <Slide v-for="slide in data" :key="slide.id">
-          <div class="carousel__item" @click="slideTo(currentSlide - 1)">
+          <div class="carousel__small" @click="slideTo(currentSlide - 1)">
             <nuxt-img :src="slide.src" class="carousel__item__img-small" :alt="slide.title" />
           </div>
         </Slide>
@@ -122,7 +122,6 @@ const draggable = ref(false)
   position: absolute;
   width: 100%;
   height: fit-content;
-  padding-bottom: 3rem;
   top: 0;
   left: 0;
 }
@@ -135,7 +134,9 @@ const draggable = ref(false)
 .carousel {
   cursor: url("/img/pause-button.png"), auto;
 }
-
+.carousel__small {
+  margin-bottom: 2rem;
+}
 .carousel__item__large {
   padding-bottom: 2rem;
   width: 100vw;
