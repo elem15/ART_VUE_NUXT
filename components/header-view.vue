@@ -5,13 +5,13 @@
     </h1>
     <div id="main-navigation" class="main-navigation">
       <nav class="nav">
-        <ul class="nav-wrapper">
+        <ul class="nav-wrapper" @click="isGalleryActive=false">
           <li class="nav-wrapper__item">
             <NuxtLink to="/" class="nav-wrapper__item-link nav-wrapper__item-link--active">
               Главная
             </NuxtLink>
           </li>
-          <li class="nav-wrapper__item" @mouseover="isGalleryMenu=true" @mouseleave="isGalleryMenu=false">
+          <li class="nav-wrapper__item" @click.stop="isGalleryActive=true" @mouseover="isGalleryMenu=true" @mouseleave="isGalleryMenu=false">
             <NuxtLink to="/gallery" class="nav-wrapper__item-link nav-wrapper__item-link--active">
               Галерея
             </NuxtLink>
@@ -37,7 +37,7 @@
           </li>
         </ul>
       </nav>
-      <div :class="!isGalleryMenu && 'hidden'" class="gallery-menu nav-wrapper" @mouseover="isGalleryMenu=true" @mouseleave="isGalleryMenu=false">
+      <div :class="!(isGalleryMenu || isGalleryActive) && 'hidden'" class="gallery-menu nav-wrapper" @mouseover="isGalleryMenu=true" @mouseleave="isGalleryMenu=false">
         <NuxtLink to="/gallery/painting" class="nav-wrapper__item-link nav-wrapper__item-link--active">
           Живопись
         </NuxtLink>
@@ -64,6 +64,7 @@
 <script setup lang="ts">
 
 const isGalleryMenu = ref(false)
+const isGalleryActive = ref(false)
 
 </script>
 
