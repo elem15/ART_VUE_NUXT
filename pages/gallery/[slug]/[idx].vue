@@ -122,28 +122,34 @@ const draggable = ref(false)
   position: absolute;
   width: 100%;
   height: fit-content;
-  padding-top: 5rem;
+  padding-bottom: 3rem;
   top: 0;
   left: 0;
+}
+@media screen and (max-width: 576px) {
+  .modal {
+    height: fit-content;
+    padding-bottom: 0;
+  }
 }
 .carousel {
   cursor: url("/img/pause-button.png"), auto;
 }
 
 .carousel__item__large {
-  width: fit-content;
   padding-bottom: 2rem;
+  width: 100vw;
 }
 .carousel__item__img-large {
-  height: 70vh;
+  height: 65vh;
 }
 .carousel__item__img-small {
   max-width: 12vw;
   max-height: 100px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 576px) {
   .carousel__item__img-large {
-    width: 95vw;
+    max-width: 95vw;
     height: auto;
   }
 }
