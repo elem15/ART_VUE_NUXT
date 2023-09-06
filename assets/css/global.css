@@ -114,6 +114,7 @@ main {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: flex-start;
+  flex-grow: 1;
 }
 
 @media (max-width: 575px) {
@@ -140,6 +141,7 @@ main {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: flex-start;
+  flex-grow: 1;
 }
 
 .hidden {
@@ -153,7 +155,6 @@ main {
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
-    min-height: 120%;
   }
 }
 
@@ -342,6 +343,9 @@ main {
   margin-left: 10px;
   margin-right: 10px;
   transition: all 0.7s;
+  display: flex;
+  flex-direction: column;
+  height: 83vh;
 }
 
 @media (max-width: 575px) {
@@ -412,7 +416,7 @@ hr {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2rem auto 0;
+  margin: 0 auto 1rem;
   gap: 2px;
   justify-content: space-around;
 }
@@ -479,7 +483,7 @@ hr {
   text-align: center;
   font-size: 0.75rem;
   padding: 0 2rem;
-  margin: 0 2rem;
+  margin: 0 2rem 0.3rem;
   color: #757f96;
 }
 
