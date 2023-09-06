@@ -4,9 +4,6 @@
     <div :style="{opacity: loading ? 0 : 1, filter: loading ? 'blur(1rem)' : 'none'}" class="gallery-wrapper-styles">
       <div class="picture-left">
         <div class="contacts">
-          <h3>
-            КОНТАКТЫ
-          </h3>
           <h2>e-mail: <a href="mailto:walter.tanz.mit.mir@gmail.com">walter.tanz.mit.mir@gmail.com</a></h2>
 
           <h2>phone: <a href="tel:+7-981-775-37-48">+7-981-775-37-48</a></h2>
@@ -43,5 +40,9 @@ onMounted(() => {
 <style>
 .about {
   transition: all 0.7s;
+  display: flex;
+  flex-direction: column;
+  height: 83vh;
 }
+
 </style>
