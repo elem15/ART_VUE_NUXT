@@ -176,7 +176,7 @@ main {
 }
 
 .picture-left {
-  margin-top: 1em;
+  margin-top: 0;
   margin-right: 2em;
   margin-left: 2em;
 }
@@ -343,9 +343,7 @@ main {
   margin-left: 10px;
   margin-right: 10px;
   transition: all 0.7s;
-  display: flex;
-  flex-direction: column;
-  height: 83vh;
+  flex-grow: 1;
 }
 
 @media (max-width: 575px) {
@@ -400,6 +398,10 @@ hr {
   text-align: center;
 }
 
+.contacts h2 {
+  margin-top: 0;
+}
+
 .contacts a {
   color: #007185;
   transition: .7s;
@@ -416,7 +418,7 @@ hr {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto 1rem;
+  margin: 1rem auto 1rem;
   gap: 2px;
   justify-content: space-around;
 }
@@ -446,7 +448,7 @@ hr {
   margin: 0;
   list-style: none;
   justify-content: center;
-  gap: 1.7rem;
+  gap: 1.3rem;
 }
 
 .socials-wrapper:last-child {
