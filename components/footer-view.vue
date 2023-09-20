@@ -69,6 +69,16 @@
             <img src="/img/singulart.png" alt="singulart">
           </a>
         </li>
+        <li class="socials-wrapper__item">
+          <a
+            target="_blank"
+            href="https://theartling.com/en/artist/vladiy-zart"
+            class="socials-wrapper__item-link singulart"
+            aria-label="singulart"
+          >
+            <img src="/img/artling.png" alt="singulart">
+          </a>
+        </li>
       </ul>
     </div>
     <div class="copyright">

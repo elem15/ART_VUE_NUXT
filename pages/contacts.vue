@@ -40,9 +40,6 @@ onMounted(() => {
 <style>
 .about {
   transition: all 0.7s;
-  display: flex;
-  flex-direction: column;
-  height: 83vh;
 }
 
 </style>

@@ -1,41 +1,39 @@
 <template>
   <main>
     <SpinnerView v-if="loading || pending" />
-    <div class="wrapper">
-      <div class="gallery-wrapper" :style="{opacity: loading ? 0 : 1, filter: loading ? 'blur(1rem)' : 'none'}">
-        <div class="picture">
-          <div class="gallery-wrapper-picture">
-            <nuxt-img :src="collection?.src" alt="Дорога в лесу" :quality="50" />
-          </div>
-          <div class="picture-description">
-            <h2 class="picture-description-header">
-              {{ collection?.alt }}
-            </h2>
-            <p class="picture-description-article">
-              {{ collection?.description }}
-            </p>
-          </div>
+    <div class="gallery-wrapper" :style="{opacity: loading ? 0 : 1, filter: loading ? 'blur(1rem)' : 'none'}">
+      <div class="picture">
+        <div class="gallery-wrapper-picture">
+          <nuxt-img :src="collection?.src" alt="Дорога в лесу" :quality="50" />
         </div>
-        <ul v-if="galleryItems.length" class="box-container gallery">
-          <li v-for="(item, idx) in galleryItems" :key="item.id" class="box">
-            <div class="inner">
-              <NuxtLink
-                :to="`/gallery/${params}/${idx}`"
-                class="link-to-slider"
-              >
-                <nuxt-img
-                  :src="item.src"
-                  :alt="item.description"
-                  class="preview"
-                  @load="() => { if(idx === galleryItems.length -1) onLoadEvent() }"
-                />
-              </NuxtLink>
-            </div>
-          </li>
-        </ul>
+        <div class="picture-description">
+          <h2 class="picture-description-header">
+            {{ collection?.alt }}
+          </h2>
+          <p class="picture-description-article">
+            {{ collection?.description }}
+          </p>
+        </div>
       </div>
-      <FooterView :loading="loading" />
+      <ul v-if="galleryItems.length" class="box-container gallery">
+        <li v-for="(item, idx) in galleryItems" :key="item.id" class="box">
+          <div class="inner">
+            <NuxtLink
+              :to="`/gallery/${params}/${idx}`"
+              class="link-to-slider"
+            >
+              <nuxt-img
+                :src="item.src"
+                :alt="item.description"
+                class="preview"
+                @load="() => { if(idx === galleryItems.length -1) onLoadEvent() }"
+              />
+            </NuxtLink>
+          </div>
+        </li>
+      </ul>
     </div>
+    <FooterView :loading="loading" />
   </main>
 </template>
 
