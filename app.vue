@@ -15,7 +15,7 @@ useSeoMeta({
   description: 'Oil painting / Картины маслом / Академия Художеств',
   ogDescription: 'Oil painting / Картины маслом / Академия Художеств',
   ogImage: 'https://www.artwalter.site/og-image.jpg', // Add absolute URL to your image
-  ogImageWidth: 1200, // Recommended width
+  ogImageWidth: 992, // Real width
   ogImageHeight: 630, // Recommended height
   ogImageAlt: 'Artist Oil Painting Preview', // Optional: alt text for accessibility
   ogType: 'website', // Optional: specify content type
